@@ -1,0 +1,18 @@
+%nav.top-bar(data-topbar)
+  %ul.title-area
+    %li.name
+      %a{ href: '/' }
+        = image_tag("simple-logo.png", alt: "Home")
+    %li.toggle-topbar.menu-icon
+      %a{ href: "#" }
+        %span
+          menu
+  %section.top-bar-section
+    %ul.right
+      = nav_link 'Home', root_path
+      = nav_link 'Inventory', inventory_path
+      = nav_link 'FAQ', faq_path
+      = nav_link 'About Us', '/about-us'
+      = nav_link 'Location', location_path
+      = nav_link 'Contact Us', '/contact-us'
+      -# = nav_link 'Login', login_path

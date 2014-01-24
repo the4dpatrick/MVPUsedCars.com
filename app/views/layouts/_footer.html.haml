@@ -1,0 +1,78 @@
+%footer
+  .row
+    = form_for @message, url: contact_create_path, html: {  class: 'large-4 columns', data: { abide: true } } do |f|
+      .row
+        %h4
+          Contact Us
+        .sweet-honey
+          = f.label :sweet_honey, "This is a honeypot, if you see this you're CSS is turned off or you're a bot. If you're not a bot don't fill it in."
+          = f.text_field :sweet_honey
+        .small-12.columns
+          %span.user-icon
+          = f.text_field( :name, placeholder: 'Name*', 'required pattern' => '[a-zA-Z]' )
+          %small.error
+            Name is required
+        .small-12.columns
+          %span.email-icon
+          = f.email_field( :email, placeholder: 'Email Address*', pattern: 'email', required: true )
+          %small.error
+            Please enter a valid email
+        .small-12.columns
+          %span.phone-icon
+          = f.telephone_field( :phone, placeholder: 'Phone number' )
+        #form-message.small-12.columns
+          %span.message-icon
+          = f.text_area( :body, placeholder: 'Message*', required: true )
+          %small.error
+            Message is required
+        .small-12.columns
+          = f.submit( 'Send', class: 'button small small-12 columns' )
+
+    .large-4.columns
+      %h4
+        About Us
+      %p
+        MVP Used Cars has been delivering quality cars to the men and women of Misawa Air Force Base for 10+ years.
+    .large-4.columns
+      %h4
+        More Links
+      %ul#more-links
+        %li
+          %a{ href: root_path } Home
+        %li
+          %a{ href: inventory_path } Inventory
+        %li
+          %a{ href: faq_path } FAQ
+        %li
+          %a{ href: about_path } About Us
+        %li
+          %a{ href: location_path } Location
+        %li
+          %a{ href: contact_path } Contact Us
+        %li
+          %a{ href: '#' } Our Blog
+        %li
+          %a{ href: '#' } Terms of Use
+  .row
+    #social.large-4.large-push-8.columns.show-for-large-up
+      %ul.inline-list.right
+        %li
+          %a.facebook{ href: '#' }
+            %i.icon-social-c-facebook
+        %li
+          %a.twitter{ href: '#' }
+        %li
+          %a.gplus{ href: '#' }
+        %li
+          %a.pinterest{ href: '#' }
+    #social.small-4.columns.show-for-medium-down.small-centered.hide-for-large-up
+      %ul.inline-list
+        %li
+          %a.facebook{ href: '#' }
+            %i.icon-social-c-facebook
+        %li
+          %a.twitter{ href: '#' }
+        %li
+          %a.gplus{ href: '#' }
+        %li
+          %a.pinterest{ href: '#' }
