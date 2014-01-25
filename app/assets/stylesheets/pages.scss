@@ -1,3 +1,5 @@
+@import 'pages/homepage';
+@import 'pages/faq';
 // nav
 @media #{$medium-up} {
     .top-bar .name a img {
@@ -63,7 +65,6 @@
         background: #3bb8e6;
     }
 }
-@import 'homepage';
 // Footer
 footer {
     background: #191919;
