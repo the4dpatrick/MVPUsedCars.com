@@ -2,7 +2,7 @@
   .row
     = form_for @message, url: contact_create_path, html: {  class: 'large-4 columns', data: { abide: true } } do |f|
       .row
-        %h4
+        %h7
           Contact Us
         .sweet-honey
           = f.label :sweet_honey, "This is a honeypot, if you see this you're CSS is turned off or you're a bot. If you're not a bot don't fill it in."
@@ -29,12 +29,12 @@
           = f.submit( 'Send', class: 'button small small-12 columns' )
 
     .large-4.columns
-      %h4
+      %h7
         About Us
       %p
         MVP Used Cars has been delivering quality cars to the men and women of Misawa Air Force Base for 10+ years.
     .large-4.columns
-      %h4
+      %h7
         More Links
       %ul#more-links
         %li
@@ -76,3 +76,5 @@
           %a.gplus{ href: '#' }
         %li
           %a.pinterest{ href: '#' }
+    %small.copyright
+      = "© MVP Used Cars #{Time.now.year}. All rights reserved."

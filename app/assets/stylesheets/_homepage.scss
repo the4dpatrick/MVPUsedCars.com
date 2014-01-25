@@ -1,0 +1,245 @@
+// Homepage
+#home {
+    main > div:first-child { height: 500px; }
+    main > div, section { height: auto; }
+    #general-info, #our-customers, #show-brands { padding: 3em 0; }
+    header {
+        background: url('home/header/home-header.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center 0;
+        height: 500px;
+        color: white;
+        height: 100%;
+        text-align: center;
+        h1 {
+            color: white;
+            font-weight: 400;
+            margin: 0 10px;
+        }
+        p {
+            font-size: 1.4rem;
+            font-weight: 300;
+        }
+        .row {
+            position: relative;
+            top: 30%;
+        }
+    }
+    .section-title {
+        font-weight: 400;
+        color: #666b70;
+        font-size: 2rem;
+        text-align: center;
+        margin-bottom: 1em;
+    }
+
+
+    #general-info {
+        border-top: 5px solid #51b7eb;
+        > div {
+            text-align: center;
+            a { text-decoration: none; color: black; }
+        }
+    }
+
+
+    #our-customers {
+        background: #f4f4f4;
+        .customers-row {
+            overflow: hidden;
+            width: 100%;;
+            background-image: url('/assets/home/our-customers/customers.jpg');
+            height: 70px;
+            background-repeat: no-repeat;
+            margin-bottom: 2rem;
+            opacity: 0.7;
+        }
+
+        // orbit slider
+        .orbit-container {
+            width: 100%;
+            max-width: rem-calc(1000);
+            margin: 0 auto;
+            ul.slides > li {
+                padding: 0 30px;
+                @media #{small-only} { padding: 0 2px; }
+                .customer-review {
+                    width: 300px;
+                    display: block;
+                    float: left;
+                    margin-right: 20px;
+                    .quote-meta { top: 10px; position: relative; }
+                    &:hover {
+                        .quote-meta {
+                            top: 0;
+                            @include transition-property(all);
+                            @include transition-duration(0.2s);
+                            @include transition-timing-function(ease-out);
+                            .quotee .inner { background: #E1E1E1; }
+                            .quotee:after { color: #E1E1E1; }
+                        }
+                        .image .inner { background-size: 100%; }
+                    }
+                    .quote > .inner {
+                        background: #fff;
+                        margin-bottom: 0;
+                        padding: 1em;
+                    }
+                    .quotee {
+                        margin-bottom: -1em;
+                        &:after {
+                            content: "\25BE";
+                            color: #CBCBCB;
+                            font-size: 2em;
+                            position: relative;
+                            bottom: 25px;
+                            left: 140px;
+                        }
+                        & > .inner {
+                            background: #CBCBCB;
+                            margin-bottom: 0;
+                            padding: 0.5em 0.8em;
+                            height: 35px;
+                            line-height: 1em;
+                            @include transition-property(all);
+                            @include transition-duration(0.1s);
+
+                            .name, .purchased-car {
+                                width: 49%;
+                                display: inline-block;
+                                margin-bottom: 0;
+                                font-size: 1em;
+                                line-height: 1em;
+                            }
+                            .name { font-weight: 700; }
+                            .purchased-car {
+                                text-align: right;
+                                font-weight: 300;
+                            }
+                        }
+                    }
+                    .image .inner {
+                        background-position: center center;
+                        background-size: 110%;
+                        width: 100%;
+                        height: 200px;
+                        overflow: hidden;
+                        @include transition-property(all);
+                        @include transition-duration(0.1s);
+                    }
+                }
+                .customer-review:last-child { margin: 0; }
+            }
+
+            // orbit buttons
+            .orbit-next, .orbit-prev { width: 27px; }
+            .orbit-next {
+                margin-top: -28px;
+                &:hover > span { border-left-color: white; }
+                & > span { border-left-color: #E7E6E6; }
+            }
+            .orbit-prev {
+                margin-top: -28px;
+                &:hover > span { border-right-color: white; }
+                & > span { border-right-color: #E7E6E6; }
+            }
+            .orbit-slide-number { display: none; }
+            .orbit-bullets { display: inline-block; }
+        }
+        // hide orbit buttons when small and medium
+        @media #{$medium-only} { .orbit-container { display: none; } }
+        @media #{$small-only} { .orbit-container { display: none; } }
+
+
+        // center block grids
+        @media #{$medium-only} {
+            ul.medium-block-grid-2 { width: 630px; margin: 0 auto;
+                                     > li { padding: 0 0 1.25rem 0; }
+                                   }
+        }
+        @media #{$small-only} {
+            ul.small-block-grid-1 { width: 300px; margin: 0 auto;
+                                    > li { padding: 0 0 1.25rem 0;
+                                         }
+                                  }
+        }
+            .customer-review {
+                width: 300px;
+                display: block;
+                float: left;
+                margin-right: 20px;
+                .quote-meta { top: 10px; position: relative; }
+                &:hover {
+                    .quote-meta {
+                        top: 0;
+                        @include transition-property(all);
+                        @include transition-duration(0.2s);
+                        @include transition-timing-function(ease-out);
+                        .quotee .inner { background: #E1E1E1; }
+                        .quotee:after { color: #E1E1E1; }
+                    }
+                    .image .inner { background-size: 100%; }
+                }
+                .quote > .inner {
+                    background: #fff;
+                    margin-bottom: 0;
+                    padding: 1em;
+                }
+                .quotee {
+                    margin-bottom: -1em;
+                    &:after {
+                        content: "\25BE";
+                        color: #CBCBCB;
+                        font-size: 2em;
+                        position: relative;
+                        bottom: 25px;
+                        left: 140px;
+                    }
+                    & > .inner {
+                        background: #CBCBCB;
+                        margin-bottom: 0;
+                        padding: 0.5em 0.8em;
+                        height: 35px;
+                        line-height: 1em;
+                        @include transition-property(all);
+                        @include transition-duration(0.1s);
+
+                        .name, .purchased-car {
+                            width: 49%;
+                            display: inline-block;
+                            margin-bottom: 0;
+                            font-size: 1em;
+                            line-height: 1em;
+                        }
+                        .name { font-weight: 700; }
+                        .purchased-car {
+                            text-align: right;
+                            font-weight: 300;
+                        }
+                    }
+                }
+                .image .inner {
+                    background-position: center center;
+                    background-size: 110%;
+                    width: 100%;
+                    height: 200px;
+                    overflow: hidden;
+                    @include transition-property(all);
+                    @include transition-duration(0.1s);
+                }
+            }
+            .customer-review:last-child { margin: 0; }
+    }
+    #show-brands {
+        background: #60A4C6;
+        color: white;
+        text-align: center;
+        p:nth-child(2) {
+            font-weight: 100;
+            font-size: 1.2rem;
+            margin-bottom: 0;
+        }
+        p:nth-child(3) { font-size: 2rem; }
+    }
+}

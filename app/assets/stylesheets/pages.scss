@@ -1,8 +1,8 @@
+// nav
 @media #{$medium-up} {
-    // nav
     .top-bar .name a img {
         height: $topbar-height;
-        margin-left: 10px;
+        margin-left: -1px;
     }
     .top-bar-section ul {
         margin-right: 30px;
@@ -63,23 +63,28 @@
         background: #3bb8e6;
     }
 }
-
-// footer
+@import 'homepage';
+// Footer
 footer {
     background: #191919;
-    padding-top: 10px;
-
-    h4 { font-weight: normal; }
+    padding-top: 1rem;
+    h7 {
+        font-size: rem-calc(20);
+        font-weight: normal;
+        margin-bottom: 1rem;
+        display: block;
+    }
     small { color: rgb(132, 132, 132); }
-    ul#more-links { @include column-count(2); }
+    ul#more-links { @include column-count(2); text-align: left; }
     ul, p { font-weight: 200; }
-    h4, p, ul li a {
+    .row > h7, h7, p, ul li a {
         color: white;
         text-align: center;
     }
-
+    .row { text-align: center;}
     // Email form styles
     form {
+        text-align: center;
         .sweet-honey { display: none; }
         input[type='text'], input[type='email'], input[type='tel'], textarea {
             background-color: transparent;
@@ -181,6 +186,14 @@ footer {
         }
         .pinterest {
             &:before { content: '\F313'; }
+        }
+    }
+    @media #{$large-up} {
+        .copyright {
+            position: relative;
+            right: -207px;
+            bottom: 0;
+            width: 191px;
         }
     }
 }

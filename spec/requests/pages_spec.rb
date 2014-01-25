@@ -21,7 +21,7 @@ describe "Pages" do
     describe "Footer" do
 
       describe "Contact Form" do
-        it { should have_selector('h4', text: 'Contact Us') }
+        it { should have_selector('h7', text: 'Contact Us') }
 
         context "when a valid message" do
 
@@ -49,11 +49,11 @@ describe "Pages" do
       end
 
       describe "About Us" do
-        it { should have_selector('h4', text: 'About Us') }
+        it { should have_selector('h7', text: 'About Us') }
       end
 
       describe "More Links" do
-        it { should have_selector('h4', text: 'More Links') }
+        it { should have_selector('h7', text: 'More Links') }
       end
       it "has social buttons for large up screens" do
         expect(page).to have_selector('#social.show-for-large-up>ul')
