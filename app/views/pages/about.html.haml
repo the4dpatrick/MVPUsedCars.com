@@ -1,2 +1,36 @@
 = content_for :title do
   About Us - Misawa Used Cars
+%div
+  %header
+    .row
+      .small-6.small-centered.columns
+        = image_tag 'about/header/about.svg', onerror: "this.onerror=null; this.src='/assets/about/header/about.png'"
+      %h1
+        About Us
+      %p
+        Learn about our company and what makes us the best place to purchase a car in Misawa Air Force Base
+%section.row
+  %p
+    %span
+      MVP Used Cars
+    is an used car dealership company. We are based in Misawa Air Force Base, Japan. We have been serving the men and women of Misawa Air Force Base with quality used cars for over 10 years
+  %ul
+    %li
+      %p
+        %span
+          Lorem ipsum
+        dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+    %li
+      %p
+        %span
+          Lorem ipsum
+        dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+    %li
+      %p
+        %span
+          Lorem ipsum
+        dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+  %p
+    To get started simply
+    = link_to 'Contact Us', contact_path
+    , and tell us about your vehicle needs
