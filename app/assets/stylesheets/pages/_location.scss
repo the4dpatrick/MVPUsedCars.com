@@ -1,0 +1,118 @@
+#location {
+    main > div:first-child { height: 500px; }
+    main > div, section { height: auto; }
+    header {
+        background: url('location/header/location-header.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center 0;
+        height: 500px;
+        color: white;
+        height: 100%;
+        text-align: center;
+        h1 {
+            color: white;
+            font-weight: 400;
+            margin: 0 10px;
+        }
+        p {
+            font-size: 1.4rem;
+            font-weight: 300;
+        }
+        .row {
+            position: relative;
+            top: 30%;
+        }
+    }
+    #directions {
+        background: #f4f4f4;
+        padding: 2em 0;
+        .row {
+            background: #fff;
+            padding: 1em 0;
+            border: 1px solid #e5e5e5;
+            #directions-details {
+                h2 {
+                    &:before {
+                        content: '\E724';
+                        font-family: "entypo";
+                        color: #c6c6c6;
+                        font-size: 3rem;
+                        line-height: 0;
+                        position: relative;
+                        top: 3px;
+                    }
+                    color: #72ad25;
+                    font-weight: 500;
+                    font-size: 1.4rem;
+                }
+                .hours {
+                    padding-left: 1.5em;
+                    font-size: 1rem;
+                    font-weight: 300;
+                    span { font-weight: 400; padding: 0 5px; }
+                }
+                div {
+                    padding: 2em 0 4em;
+                    p:first-child {
+                        &:before {
+                            content: '\27A2';
+                            font-family: "entypo";
+                            color: #c6c6c6;
+                            font-size: 2.2rem;
+                            line-height: 0;
+                            position: relative;
+                            top: 5px;
+                            left: -5px;
+                        }
+                        padding-left: 1.5em;
+                        text-indent: -1.5em;
+                    }
+                    address {
+                        &:before {
+                            content: '\E727';
+                            font-family: "entypo";
+                            color: #c6c6c6;
+                            font-size: 2.2rem;
+                            font-style: normal;
+                            line-height: 0;
+                            position: relative;
+                            top: 14px;
+                            left: -5px;
+                        }
+                        font-weight: 300;
+                        padding-left: 1.5em;
+                        text-indent: -1.5em;
+                    }
+                    small { padding-left: 2.4em; }
+                }
+                // telephone #
+                p:last-child {
+                    &:before {
+                        content: '\1F4DE';
+                        font-family: "entypo";
+                        color: #c6c6c6;
+                        font-size: 2.2rem;
+                        line-height: 0;
+                        position: relative;
+                        top: 1px;
+                        left: -3px;
+                    }
+                    margin-bottom: 0;
+                    font-size: 1.4rem;
+                    a { color: black; }
+                    span:nth-child(2) { font-weight: 300; font-size: 1rem; padding: 0 5px; }
+                }
+            }
+            @media #{$small-only} {
+                .small-12 > img { padding: 1em 0 0 0; }
+                #directions-details {
+                    p:last-child {
+                        padding-left: 1em;
+                        text-indent: -1em;
+                    }
+                }
+            }
+        }
+    }
+}

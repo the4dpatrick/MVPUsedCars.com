@@ -1,9 +1,48 @@
 = content_for :title do
   Directions - Misawa Air Force Base
-<iframe width="650" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.co.jp/maps?ie=UTF8&amp;q=MVP+Used+Cars&amp;fb=1&amp;gl=jp&amp;hq=mvp+used+cars&amp;hnear=0x5f9c9e15d6a6af33:0x47ad9465cf39c203,Misawa,+Aomori+Prefecture&amp;cid=8853326298653188672&amp;t=m&amp;brcurrent=3,0x5f9b5e39a6e2bd5f:0x3970eedef2c0c878,0&amp;ll=40.696909,141.377349&amp;spn=0.005694,0.020599&amp;z=16&amp;iwloc=A&amp;output=embed"></iframe><br /><small><a href="https://maps.google.co.jp/maps?ie=UTF8&amp;q=MVP+Used+Cars&amp;fb=1&amp;gl=jp&amp;hq=mvp+used+cars&amp;hnear=0x5f9c9e15d6a6af33:0x47ad9465cf39c203,Misawa,+Aomori+Prefecture&amp;cid=8853326298653188672&amp;t=m&amp;brcurrent=3,0x5f9b5e39a6e2bd5f:0x3970eedef2c0c878,0&amp;ll=40.696909,141.377349&amp;spn=0.005694,0.020599&amp;z=16&amp;iwloc=A&amp;source=embed" style="color:#0000FF;text-align:left">View Larger Map</a></small>
-%address
-  青森県三沢市 岡三沢六丁目15−15
-%address
-  〒 033-0021 Aomori Prefecture Misawa Oka-Misawa Roku-Chome  15-15
-%p
-  Exit the POL/Falcon gate and go straight until the first stop light. MVP Used Cars will be to your right.
+%div
+  %header
+    .row
+      .small-6.small-centered.columns
+        = image_tag 'about/header/about.svg', onerror: "this.onerror=null; this.src='/assets/about/header/about.png'"
+      %h1
+        Our Location
+      %p
+        We'd love to talk and meet with you in person. Come down and say Hi!
+%section#directions
+  .row
+    .small-12.medium-7.large-7.columns#directions-details
+      %h2
+        Misawa Air Force Base
+      %p.hours
+        Monday - Saturday:
+        %span
+          0900 - 1830
+        Sunday:
+        %span
+          By appointment
+      %div
+        %p
+          First stop light outside
+          %br
+          the POL/Falcon gate take a right
+        %address
+          Misawa Oka-Misawa 6 chou-me 15-15
+          %br
+          青森県三沢市岡三沢六丁目１５−１５
+        %small
+          %a{ href: '#google-maps' }
+            View in Google Maps
+      %p
+        %span{ itemprop: 'telephone' }
+          %a{ href: 'tel:080-4058-5771' }
+            080-4058-5771
+        %span
+          or
+        %span{ itemprop: 'telephone' }
+          %a{ href: 'tel:0176-58-6903' }
+            0176-58-6903
+    .small-12.medium-5.large-5.columns
+      = image_tag 'location/location/map.jpg'
+#google-maps.flex-video{ style: 'height: 700px; padding-bottom: 0; margin-bottom: 0;' }
+  <iframe style="height: 700px; margin: 0 auto;"width="1500" height="0" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.co.jp/maps?ie=UTF8&amp;q=MVP+Used+Cars&amp;fb=1&amp;gl=jp&amp;hq=mvp+used+cars&amp;hnear=0x5f9c9e15d6a6af33:0x47ad9465cf39c203,Misawa,+Aomori+Prefecture&amp;cid=8853326298653188672&amp;t=m&amp;brcurrent=3,0x5f9b5e39a6e2bd5f:0x3970eedef2c0c878,0&amp;ll=40.696909,141.377349&amp;spn=0.005694,0.020599&amp;z=16&amp;iwloc=A&amp;output=embed"></iframe><br /><small><a href="https://maps.google.co.jp/maps?ie=UTF8&amp;q=MVP+Used+Cars&amp;fb=1&amp;gl=jp&amp;hq=mvp+used+cars&amp;hnear=0x5f9c9e15d6a6af33:0x47ad9465cf39c203,Misawa,+Aomori+Prefecture&amp;cid=8853326298653188672&amp;t=m&amp;brcurrent=3,0x5f9b5e39a6e2bd5f:0x3970eedef2c0c878,0&amp;ll=40.696909,141.377349&amp;spn=0.005694,0.020599&amp;z=16&amp;iwloc=A&amp;source=embed" style="color:#0000FF;text-align:center;">View Larger Map</a></small>
