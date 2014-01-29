@@ -1,0 +1,174 @@
+#contact {
+    header { background: url('contact/header/contact-header.jpg'); }
+    #general-info, #email-form, { padding: 3em 0; }
+    #general-info {
+        > div {
+            text-align: center;
+            a { text-decoration: none; color: black; }
+        }
+    }
+    #send-us-a-message {
+        background: $secondary-color;
+        padding: 2em 0;
+        position: relative;
+        h2 {
+            color: white;
+            font-weight: normal;
+            text-align: center;
+            font-size: 1.4rem;
+        }
+
+        &:after {
+            content: '';
+            position: absolute;
+            bottom: -13px;
+            left: 50%;
+            margin-left: -25px;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 13px 25px 0 25px;
+            border-color: $secondary-color transparent transparent transparent;
+
+        }
+    }
+    // Email form styles
+    #email-form {
+        background: #f4f4f4;
+        form {
+            text-align: center;
+            label { display: none; }
+            input[type='text'], input[type='email'], input[type='tel'], textarea {
+                background-color: transparent;
+                color: black;
+                box-shadow: none;
+                -webkit-box-shadow: none;
+                &:focus {
+                    background-color: transparent;
+                }
+                &[data-invalid] {
+                    border: 1px solid #D44949;
+                }
+                & + small.error {
+                    background: #D44949 !important;
+                }
+            }
+            .small-12.columns {
+                .user-icon, .email-icon, .phone-icon, .message-icon, .subject-icon {
+                    color: #c2c2c2;;
+                    font-family: 'entypo';
+                    width: 32px;
+                    font-size: 36px;
+                    padding: 0 6px 0 6px;
+                    position: absolute;
+                    left: 16px;
+                    top: 0;
+                    line-height: 1;
+                    border-right: 1px solid $input-border-color;
+                    @include transition-property(border-color);
+                    @include transition-duration(0.3s);
+                    @include transition-timing-function(ease-in-out);
+
+                    & + input[type='text'], & + input[type='email'], & + input[type='tel'],  & + textarea { padding-left: 40px; }
+                    & + textarea { min-height: 150px; }
+                }
+                &.error {
+                    .user-icon, .email-icon, .phone-icon, .message-icon, .subject-icon {
+                        border-color: #D44949 !important;
+                    }
+                    // remove contrasting box-shadow when an error
+                    input[type='text'], input[type='email'], textarea {
+                        -webkit-box-shadow: 0 0 0 0 transparent;
+                        box-shadow: 0 0 0 0 transparent;
+                    }
+                }
+                .user-icon:before { content: '\1F464'; }
+                .email-icon:before { content: '\2709' }
+                .phone-icon {
+                    @include scaleX( -1 );
+                    padding: 0 6px 0 6px;
+                    border-right: none;
+                    border-left: 1px solid $input-border-color;
+                    &:before { content: '\1F4DE'; }
+                }
+                .subject-icon:before { content: '\E731';}
+                .button { margin-bottom: 0; }
+            }
+            #form-message {
+                overflow: hidden;
+                margin-bottom: 1rem;
+                .message-icon {
+                    border-bottom: 1px solid $input-border-color;
+                    height: 999px;
+                    &:before { content: '\270E'; }
+                    & + textarea { margin-bottom: 0; }
+                }
+                &.error {
+                    .message-icon {
+                        height: 36px;
+                    }
+                }
+            }
+        }
+    }
+        #connect-with-us {
+            $yellow: #e0c042;
+            > div:first-child {
+                background: $yellow;
+                padding: 1.1em 0;
+                width: 100%;
+                position: relative;
+                h3 {
+                    span { font-weight: 100; }
+                    color: white;
+                    font-weight: normal;
+                    text-align: center;
+                    font-size: 1.4rem;
+                }
+                &:after {
+                    content: '';
+                    position: absolute;
+                    bottom: -13px;
+                    left: 50%;
+                    margin-left: -25px;
+                    width: 0;
+                    height: 0;
+                    border-style: solid;
+                    border-width: 13px 25px 0 25px;
+                    border-color: $yellow transparent transparent transparent;
+
+                }
+            }
+            // Social buttons
+            #social-links {
+                text-align: center;
+                li a { font-size: 8rem; }
+                @media #{$small-only} { li a { font-size: 7.2rem; } }
+                ul { margin-left: 0; margin-bottom: 0; }
+                > ul li { margin-left: rem-calc(1); }
+                li a {
+                    line-height: 1;
+                    font-family: 'entypo-social';
+                    @include transition-property(color);
+                    @include transition-duration(0.3s);
+                }
+                @mixin social-icon($content, $color) {
+                    &:before { content: $content; }
+                    color: $color;
+                    &:hover { color: lighten($color, 15%); }
+                }
+                .facebook {
+                    @include social-icon('\F30D', #3b5998);
+                }
+                .twitter {
+                    @include social-icon('\F30A', #4099ff);
+                }
+                .gplus {
+                    @include social-icon('\F310', #d34836);
+                }
+                .pinterest {
+                    @include social-icon('\F313', #c92228);
+                }
+            }
+        }
+}

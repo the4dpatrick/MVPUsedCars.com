@@ -1,16 +1,15 @@
 class ContactController < ApplicationController
 
+
   def create
     @message = Message.new(message_params)
+    session[:return_to] = request.referer || root_path
 
     if @message.valid?
       ContactMailer.new_message(@message).deliver
-      # success module
-      redirect_to(root_path, notice: 'Message was sent successfully.')
+      redirect_to session[:return_to], notice: 'Message was sent successfully'
     else
-      # highlight which fields are not valid
-      flash[:alert] = 'Please fill in all the field'
-      render :new
+      redirect_to session[:return_to], alert: 'Unsuccessfuly sent message'
     end
   end
 
@@ -19,4 +18,5 @@ class ContactController < ApplicationController
   def message_params
     params.require(:message).permit(:name, :email, :subject, :phone, :body, :sweet_honey)
   end
+
 end

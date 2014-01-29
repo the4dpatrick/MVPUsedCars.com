@@ -87,8 +87,6 @@ Mvp::Application.configure do
     authentication:       'plain',
     enable_starttls_auto: true
   }
-  config.action_mailer.default_options = {from: "MVP Used Cars <no-reply@mvpusedcars.com>"}
-  config.action_mailer.default_url_options = {
-    :host => "MVPUsedCars.com"
-    }
+  config.action_mailer.default_options = { from: "MVP Used Cars <no-reply@mvpusedcars.com>" }
+  config.action_mailer.default_url_options = { :host => "MVPUsedCars.com" }
 end

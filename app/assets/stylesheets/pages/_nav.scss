@@ -1,0 +1,55 @@
+// nav
+@media #{$medium-up} {
+    .top-bar .name a img {
+        height: $topbar-height;
+        margin-left: -1px;
+    }
+    .top-bar-section ul {
+        margin-right: 30px;
+        background: $topbar-bg;
+        li {
+            margin-right: 10px;
+            a:not(.button){
+                line-height: 1.7;
+                padding: 0 5px;
+                position: relative;
+                top: 38px;
+            }
+            &.active > a:hover {
+                color: $topbar-link-color-active-hover;
+            }
+            > a:hover {
+                @include transition-property(background, color);
+                @include transition-duration(0.3s);
+                @include transition-timing-function(ease-in-out);
+            }
+        }
+    }
+}
+@media #{$small-only} {
+    .top-bar, .top-bar .name, .top-bar .name a img {
+        height: 45px;
+        line-height: 45px;
+    }
+    .top-bar .name a img {
+        margin-left: 15px;
+        height: 30px;
+        margin-top: -4px;
+    }
+    .top-bar-section ul {
+        margin: 0;
+        background: $topbar-bg;
+        li {
+            margin: 0;
+            > a {
+                background: $topbar-bg;
+            }
+            a:not(.button) {
+                top: 0;
+            }
+            &.active > a:hover {
+                color: $topbar-link-color-active-hover;
+            }
+        }
+    }
+}

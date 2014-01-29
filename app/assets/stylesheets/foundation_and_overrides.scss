@@ -139,9 +139,9 @@ $secondary-color: #008bc0;
 
 // We use these to control border styles.
 // $alert-border-style: solid;
-// $alert-border-width: 1px;
+$alert-border-width: 0;
 // $alert-border-color: darken($primary-color, $alert-function-factor);
-// $alert-bottom-margin: rem-calc(20);
+$alert-bottom-margin: rem-calc(0);
 
 // We use these to style the close buttons
 // $alert-close-color: #333;

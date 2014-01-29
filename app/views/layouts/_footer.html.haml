@@ -8,19 +8,23 @@
           = f.label :sweet_honey, "This is a honeypot, if you see this you're CSS is turned off or you're a bot. If you're not a bot don't fill it in."
           = f.text_field :sweet_honey
         .small-12.columns
+          = f.label :name
           %span.user-icon
           = f.text_field( :name, placeholder: 'Name*', 'required pattern' => '[a-zA-Z]' )
           %small.error
             Name is required
         .small-12.columns
+          = f.label :email
           %span.email-icon
           = f.email_field( :email, placeholder: 'Email Address*', pattern: 'email', required: true )
           %small.error
             Please enter a valid email
         .small-12.columns
+          = f.label :phone
           %span.phone-icon
           = f.telephone_field( :phone, placeholder: 'Phone number' )
         #form-message.small-12.columns
+          = f.label :body
           %span.message-icon
           = f.text_area( :body, placeholder: 'Message*', required: true )
           %small.error
@@ -58,7 +62,6 @@
       %ul.inline-list.right
         %li
           %a.facebook{ href: '#' }
-            %i.icon-social-c-facebook
         %li
           %a.twitter{ href: '#' }
         %li
@@ -69,7 +72,6 @@
       %ul.inline-list
         %li
           %a.facebook{ href: '#' }
-            %i.icon-social-c-facebook
         %li
           %a.twitter{ href: '#' }
         %li

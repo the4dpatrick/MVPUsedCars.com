@@ -1,0 +1,133 @@
+// Footer
+footer {
+    background: #191919;
+    padding-top: 1rem;
+    h7 {
+        font-size: rem-calc(20);
+        font-weight: normal;
+        margin-bottom: 1rem;
+        display: block;
+    }
+    small { color: rgb(132, 132, 132); }
+    ul#more-links { @include column-count(2); text-align: left; }
+    ul, p { font-weight: 200; }
+    .row > h7, h7, p, ul li a {
+        color: white;
+        text-align: center;
+    }
+    .row { text-align: center;}
+    // Email form styles
+    form {
+        text-align: center;
+        input[type='text'], input[type='email'], input[type='tel'], textarea {
+            background-color: transparent;
+            color: white;
+            &:focus {
+                background-color: transparent;
+            }
+            &[data-invalid] {
+                border: 1px solid #D44949;
+            }
+            & + small.error {
+                background: #D44949 !important;
+            }
+        }
+        .small-12.columns {
+            label { display: none; }
+            .user-icon, .email-icon, .phone-icon, .message-icon {
+                color: white;
+                font-family: 'entypo';
+                width: 32px;
+                font-size: 36px;
+                padding: 0 6px 0 6px;
+                position: absolute;
+                left: 16px;
+                top: 0;
+                line-height: 1;
+                border-right: 1px solid $input-border-color;
+                @include transition-property(border-color);
+                @include transition-duration(0.3s);
+                @include transition-timing-function(ease-in-out);
+
+                & + input[type='text'], & + input[type='email'], & + input[type='tel'],  & + textarea { padding-left: 40px; }
+            }
+            &.error {
+                .user-icon, .email-icon, .phone-icon, .message-icon {
+                    border-color: #D44949 !important;
+                }
+                // remove contrasting box-shadow when an error
+                input[type='text'], input[type='email'], textarea {
+                    -webkit-box-shadow: 0 0 0 0 transparent;
+                    box-shadow: 0 0 0 0 transparent;
+                }
+            }
+            .user-icon:before { content: '\1F464'; }
+            .email-icon:before { content: '\2709' }
+            .phone-icon {
+                @include scaleX( -1 );
+                padding: 0 6px 0 6px;
+                border-right: none;
+                border-left: 1px solid $input-border-color;
+                &:before { content: '\1F4DE'; }
+            }
+        }
+        #form-message {
+            overflow: hidden;
+            margin-bottom: 1rem;
+            .message-icon {
+                border-bottom: 1px solid $input-border-color;
+                height: 999px;
+                &:before { content: '\270E'; }
+                & + textarea { margin-bottom: 0; }
+            }
+            &.error {
+                .message-icon {
+                    height: 36px;
+                }
+            }
+        }
+    }
+
+    // Social buttons
+    #social {
+        &.show-for-large-up {
+            margin: -4.7rem auto 0 auto;
+            margin-right: 1.375rem;
+            li a { font-size: 65px; }
+        }
+        &.hide-for-large-up {
+            width: rem-calc(266);
+            ul { margin-left: 0; }
+            li a { font-size: 100px; }
+        }
+        > ul li { margin-left: rem-calc(1); }
+        li a {
+            color: #5E5F5E;
+            line-height: 1;
+            font-family: 'entypo-social';
+            @include transition-property(color);
+            @include transition-duration(0.3s);
+            &:hover { color: #9C9C9C; }
+        }
+        .facebook {
+            &:before { content: '\F30D'; }
+        }
+        .twitter {
+            &:before { content: '\F30A'; }
+        }
+        .gplus {
+            &:before { content: '\F310'; }
+        }
+        .pinterest {
+            &:before { content: '\F313'; }
+        }
+    }
+    @media #{$large-up} {
+        .copyright {
+            position: relative;
+            right: -207px;
+            bottom: 0;
+            width: 191px;
+        }
+    }
+}
