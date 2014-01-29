@@ -23,27 +23,29 @@ describe "Pages" do
       describe "Contact Form" do
         it { should have_selector('h7', text: 'Contact Us') }
 
-        context "when a valid message" do
+        describe "send a message" do
+          before(:each) { ActionMailer::Base.deliveries.clear }
+          after(:each) { ActionMailer::Base.deliveries.clear }
 
-          it "sends an email" do
-            post contact_create_path, message: attributes_for(:message)
-            expect(ActionMailer::Base.deliveries.last.to).to eq(["#{ENV["MVP_USERNAME"]}"])
-            ActionMailer::Base.deliveries.clear
+          context "when a valid message" do
+            it "sends an email" do
+              post contact_create_path, message: attributes_for(:message)
+              expect(ActionMailer::Base.deliveries.last.to).to eq(["#{ENV["MVP_USERNAME"]}"])
+            end
           end
-        end
 
-        context "when fields are not filled" do
-          it "does not send an email" do
-            post contact_create_path, message: attributes_for(:message, name: '', body: '')
-            expect(ActionMailer::Base.deliveries).to be_empty
-            ActionMailer::Base.deliveries.clear
+          context "when fields are not filled" do
+            it "does not send an email" do
+              post contact_create_path, message: attributes_for(:message, name: '', body: '')
+              expect(ActionMailer::Base.deliveries).to be_empty
+            end
           end
-        end
 
-        context "when honeypot is filled" do
-          it "does not send an email" do
-            post contact_create_path, message: attributes_for(:message, sweet_honey: 'bot')
-            expect(ActionMailer::Base.deliveries).to be_empty
+          context "when honeypot is filled" do
+            it "does not send an email" do
+              post contact_create_path, message: attributes_for(:message, sweet_honey: 'bot')
+              expect(ActionMailer::Base.deliveries).to be_empty
+            end
           end
         end
       end
@@ -72,10 +74,10 @@ describe "Pages" do
 
     describe "Send a message" do
       before do
-        fill_in "Name", with: 'name'
+        fill_in "Name",  with: 'name'
         fill_in "Email", with: 'email@example.com'
         fill_in "Phone", with: '999-9999-9999'
-        fill_in "Body", with: 'Hello'
+        fill_in "Body",  with: 'Hello'
         click_button "Send"
       end
 
@@ -98,10 +100,10 @@ describe "Pages" do
 
     describe "Send a message" do
       before do
-        fill_in "Name", with: 'name'
+        fill_in "Name",  with: 'name'
         fill_in "Email", with: 'email@example.com'
         fill_in "Phone", with: '999-9999-9999'
-        fill_in "Body", with: 'Hello'
+        fill_in "Body",  with: 'Hello'
         click_button "Send"
       end
 
@@ -124,10 +126,10 @@ describe "Pages" do
 
     describe "Send a message" do
       before do
-        fill_in "Name", with: 'name'
+        fill_in "Name",  with: 'name'
         fill_in "Email", with: 'email@example.com'
         fill_in "Phone", with: '999-9999-9999'
-        fill_in "Body", with: 'Hello'
+        fill_in "Body",  with: 'Hello'
         click_button "Send"
       end
 
@@ -150,10 +152,10 @@ describe "Pages" do
 
     describe "Send a message" do
       before do
-        fill_in "Name", with: 'name'
+        fill_in "Name",  with: 'name'
         fill_in "Email", with: 'email@example.com'
         fill_in "Phone", with: '999-9999-9999'
-        fill_in "Body", with: 'Hello'
+        fill_in "Body",  with: 'Hello'
         click_button "Send"
       end
 
@@ -180,10 +182,10 @@ describe "Pages" do
       context "with main form" do
         before do
           within '#email-form' do
-            fill_in "Name", with: 'name'
+            fill_in "Name",  with: 'name'
             fill_in "Email", with: 'email@example.com'
             fill_in "Phone", with: '999-9999-9999'
-            fill_in "Body", with: 'Hello'
+            fill_in "Body",  with: 'Hello'
             click_button "Send"
           end
         end
@@ -201,10 +203,10 @@ describe "Pages" do
       context "with footer form" do
         before do
           within 'footer' do
-            fill_in "Name", with: 'name'
+            fill_in "Name",  with: 'name'
             fill_in "Email", with: 'email@example.com'
             fill_in "Phone", with: '999-9999-9999'
-            fill_in "Body", with: 'Hello'
+            fill_in "Body",  with: 'Hello'
             click_button "Send"
           end
         end
