@@ -14,6 +14,7 @@ gem 'jbuilder', '~> 1.2'
 gem 'haml'
 gem 'foundation-rails'
 gem 'compass-rails', '~> 1.1.2'
+gem 'paperclip'
 
 group :development, :test do
   gem 'sqlite3'

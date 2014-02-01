@@ -21,9 +21,12 @@
   %body{ id: "#{@bodyid}" }
     -# render navigation based on if within one of the `pages` pages
     -# ie home, faq, about us, contact us
-    = render  controller_name  == 'pages' ? 'layouts/nav_main' : 'layouts/nav_car_details'
+    - unless controller_name  == 'cars' && action_name == 'show'
+      = render 'layouts/nav_main'
+    - else
+      = render 'layouts/nav_car_details'
     %main
       = render 'layouts/flash'
       = yield
-    = render 'layouts/footer'
+      = render 'layouts/footer'
     = javascript_include_tag "application"

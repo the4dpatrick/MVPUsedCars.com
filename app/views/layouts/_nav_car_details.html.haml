@@ -1,0 +1,25 @@
+.fixed
+  %nav#car-nav.top-bar(data-topbar)
+    .nav-logo
+      = link_to image_tag('simple-logo.png'), root_path
+    %ul.title-area
+      %li.name
+        = link_to 'Inventory', inventory_path
+    %section.top-bar-section
+      %ul.right
+        %li.divider
+        %li.prev
+          -#
+            create helper that receives current @car[:id]
+            and either subtract or add one
+            return path to that car's show page
+          = link_to 'Prev', '#'
+        %li.divider
+        %li.next
+          = link_to 'Next', '#'
+    %section#nav-prev-next.show-for-small-only
+      %ul.right
+        %li.prev
+          = link_to '', '#'
+        %li.next
+          = link_to '', '#'

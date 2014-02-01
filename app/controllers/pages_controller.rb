@@ -1,12 +1,8 @@
 class PagesController < ApplicationController
-  before_action :set_message
+
 
   def index
     @bodyid = 'home'
-  end
-
-  def inventory
-    @bodyid = 'inventory'
   end
 
   def contact
@@ -23,12 +19,6 @@ class PagesController < ApplicationController
 
   def faq
     @bodyid = 'faq'
-  end
-
-  private
-
-  def set_message
-    @message = Message.new
   end
 
 end

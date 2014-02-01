@@ -6,33 +6,6 @@
 @import 'pages/location';
 @import 'pages/contact';
 
-// Page header
-#location, #home, #about, #contact {
-    #hero { height: 500px; }
-    main > div, section { height: auto; }
-    header {
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center 0;
-        height: 500px;
-        color: white;
-        height: 100%;
-        text-align: center;
-        h1 {
-            color: white;
-            font-weight: 400;
-            margin: 0 10px;
-        }
-        p {
-            font-size: 1.4rem;
-            font-weight: 300;
-        }
-        .row {
-            position: relative;
-            top: 30%;
-        }
-    }
-}
 // Blue button
 .button {
     @include button;

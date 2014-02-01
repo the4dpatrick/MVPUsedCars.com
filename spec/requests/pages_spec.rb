@@ -16,6 +16,11 @@ describe "Pages" do
       it { should have_link('About Us') }
       it { should have_link('Location') }
       it { should have_link('Contact Us') }
+
+      it "is the main nav" do
+        expect(page).to have_selector("#main-nav")
+        expect(page).to_not have_selector("#car-nav")
+      end
     end
 
     describe "Footer" do

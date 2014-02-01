@@ -1,0 +1,140 @@
+%header
+  .row
+    %h1
+      Toyota
+      %span
+        Altezza
+%section#car-details
+  #gallery
+    .row
+      .small-12.columns
+        %ul.small-block-grid-2.medium-block-grid-3.clearing-thumbs(data-clearing)
+          %li
+            = link_to image_tag('home/our-customers/customer1.jpg'), '/assets/home/our-customers/customer1.jpg'
+          %li
+            = link_to image_tag('home/our-customers/customer1.jpg'), '/assets/home/our-customers/customer1.jpg'
+          %li
+            = link_to image_tag('home/our-customers/customer1.jpg'), '/assets/home/our-customers/customer1.jpg'
+          %li
+            = link_to image_tag('home/our-customers/customer1.jpg'), '/assets/home/our-customers/customer1.jpg'
+          %li
+            = link_to image_tag('home/our-customers/customer1.jpg'), '/assets/home/our-customers/customer1.jpg'
+          %li
+            = link_to image_tag('home/our-customers/customer1.jpg'), '/assets/home/our-customers/customer1.jpg'
+
+  #info
+    .row
+      -#
+        .small-6.medium-3.columns
+          %p
+            %span
+              Make:
+            %span
+              @car.make
+          %p
+            %span
+              Model:
+            %span
+              @car.model
+        .small-6.medium-3.columns
+          %p
+            %span
+              Year:
+            %span
+              @car.year
+          %p
+            %span
+              Seats:
+            %span
+              @car.seats
+        .small-6.medium-3.columns
+          %p
+            %span
+              Transmission:
+            %span
+              @car.transmission
+          %p
+            %span
+              Drive:
+            %span
+              @car.drive
+        .small-6.medium-3.columns
+          %p
+            %span
+              Interior:
+            %span
+              @car.interior
+          %p
+            %span
+              Exterior:
+            %span
+              @car.interior
+      .small-6.medium-3.columns
+        %p
+          %span
+            Make:
+          %span
+            Toyota
+        %p
+          %span
+            Model:
+          %span
+            Altezza
+      .small-6.medium-3.columns
+        %p
+          %span
+            Year:
+          %span
+            2000
+        %p
+          %span
+            Seats:
+          %span
+            3
+      .small-6.medium-3.columns
+        %p
+          %span
+            Transmission:
+          %span
+            A/T
+        %p
+          %span
+            Drive:
+          %span
+            2WD
+      .small-6.medium-3.columns
+        %p
+          %span
+            Interior:
+          %span
+            Black
+        %p
+          %span
+            Exterior:
+          %span
+            Gray
+%section#enquire
+  %a.button{ href: '#' }
+    Enquire
+    %br
+    %span
+      for more details
+%section#view-more
+  .row
+    .small-12.small-centered.columns
+      %h1
+        View More
+      %ul.small-block-grid-1.medium-block-grid-3
+        // iterate through @cars.each
+        %li
+          %p
+            2000 Toyota Altezza
+          = link_to image_tag('home/our-customers/customer1.jpg'), '#'
+        %li
+          %p
+            2000 Toyota Altezza
+          = link_to image_tag('home/our-customers/customer2.jpg'), '#'
+        %li
+          %p
+            2000 Toyota Altezza
+          = link_to image_tag('home/our-customers/customer3.jpg'), '#'
