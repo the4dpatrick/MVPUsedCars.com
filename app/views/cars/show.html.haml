@@ -1,9 +1,6 @@
 %header
   .row
-    %h1
-      Toyota
-      %span
-        Altezza
+    = scale_car_title(@car.make, @car.model)
 %section#car-details
   #gallery
     .row
@@ -30,45 +27,45 @@
             %span
               Make:
             %span
-              @car.make
+              = @car.make
           %p
             %span
               Model:
             %span
-              @car.model
+              = @car.model
         .small-6.medium-3.columns
           %p
             %span
               Year:
             %span
-              @car.year
+              = @car.year
           %p
             %span
               Seats:
             %span
-              @car.seats
+              = @car.seats
         .small-6.medium-3.columns
           %p
             %span
               Transmission:
             %span
-              @car.transmission
+              = @car.transmission
           %p
             %span
               Drive:
             %span
-              @car.drive
+              = @car.drive
         .small-6.medium-3.columns
           %p
             %span
               Interior:
             %span
-              @car.interior
+              = @car.interior
           %p
             %span
               Exterior:
             %span
-              @car.interior
+              = @car.interior
       .small-6.medium-3.columns
         %p
           %span

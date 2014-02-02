@@ -14,7 +14,8 @@ describe "Cars" do
   end
 
   describe "Cars#show page" do
-    before { visit car_show_path }
+    let(:car) { FactoryGirl.create(:car) }
+    before { visit car_path(car) }
     subject { page }
 
     describe "navigation" do

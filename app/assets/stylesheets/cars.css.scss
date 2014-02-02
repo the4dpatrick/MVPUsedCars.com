@@ -135,10 +135,17 @@
             font-weight: 400;
             font-size: 4em;
             span { color: gray; }
+
+            @media #{$small-only} {
+                &.smaller {
+                    font-size: 1.7em;
+                    margin-bottom: 0.18em;
+                }
+            }
         }
     }
     #car-details {
-        margin-top: -1.22em;
+        margin-top: -1.16em;
         border-bottom: solid 1px #ccc;
         #gallery {
             border-bottom: solid 1px #ccc;

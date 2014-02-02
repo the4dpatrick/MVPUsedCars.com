@@ -14,7 +14,6 @@ gem 'jbuilder', '~> 1.2'
 gem 'haml'
 gem 'foundation-rails'
 gem 'compass-rails', '~> 1.1.2'
-gem 'paperclip'
 
 group :development, :test do
   gem 'sqlite3'
@@ -23,13 +22,13 @@ group :development, :test do
   gem 'spork-rails'
   gem 'guard-spork'
   gem 'childprocess'
-  gem 'factory_girl_rails'
 end
 
 group :test do
   gem 'selenium-webdriver'
   gem 'capybara'
   gem 'growl'
+  gem 'factory_girl_rails'
 end
 
 group :doc do
