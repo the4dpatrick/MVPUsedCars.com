@@ -13,34 +13,18 @@
   .row
     .small-12.small-centered.columns
       %ul.small-block-grid-1.medium-block-grid-3
-        -# iterate through @cars.each
-          = @cars.each do |car|
-            %li
-              %p
-                = car.year car.make car.model
-              = link_to image_tag(car.image), car
-        %li
-          %p
-            2000 Toyota Altezza
-          = link_to image_tag('home/our-customers/customer1.jpg'), '#'
-        %li
-          %p
-            2000 Toyota Altezza
-          = link_to image_tag('home/our-customers/customer2.jpg'), '#'
-        %li
-          %p
-            2000 Toyota Altezza
-          = link_to image_tag('home/our-customers/customer3.jpg'), '#'
-        %li
-          %p
-            2000 Toyota Altezza
-          = link_to image_tag('home/our-customers/customer4.jpg'), '#'
-
+        - @cars.each do |car|
+          %li
+            %p
+              = car.year
+              = car.make
+              = car.model
+            = link_to image_tag(car.uploads.first.upload.url), car
 %section#request-car
   .row
     %h2
       Can't Find what you're looking for?
     %p
       We can special order specific cars upon request
-    = link_to inventory_path do
+    = link_to( contact_path(subject: 'Request a car', anchor: 'send-us-a-message') ) do
       .button Make a Request

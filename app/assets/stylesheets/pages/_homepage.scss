@@ -1,7 +1,11 @@
 // Homepage
 #home {
     #general-info, #our-customers, #show-brands { padding: 3em 0; }
-    header { background: url('home/header/home-header.jpg'); }
+    #hero { height: 500px; }
+    header {
+        background: url('home/header/home-header.jpg');
+        .row { top: 30% !important; }
+    }
     .section-title {
         font-weight: 400;
         color: #666b70;

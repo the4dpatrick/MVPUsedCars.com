@@ -7,7 +7,7 @@
     .top-bar-section ul {
         margin-right: 30px;
         background: $topbar-bg;
-        li {
+        li:not(.has-form) {
             margin-right: 10px;
             a:not(.button){
                 line-height: 1.7;
@@ -15,8 +15,10 @@
                 position: relative;
                 top: 38px;
             }
+            &.active > a { background: white; }
             &.active > a:hover {
                 color: $topbar-link-color-active-hover;
+                background: $topbar-link-bg-active-hover;
             }
             > a:hover {
                 @include transition-property(background, color);
@@ -36,19 +38,24 @@
         height: 30px;
         margin-top: -4px;
     }
+    .top-bar.expanded .toggle-topbar a span { box-shadow: none; }
     .top-bar-section ul {
         margin: 0;
         background: $topbar-bg;
-        li {
+        li:not(.has-form) {
             margin: 0;
+            &.active {
+                &:hover > a {
+                    background: $topbar-link-bg-active-hover;
+                    color: $topbar-link-color-active-hover;
+                }
+                > a {
+                    background: white;
+                }
+            }
             > a {
                 background: $topbar-bg;
-            }
-            a:not(.button) {
-                top: 0;
-            }
-            &.active > a:hover {
-                color: $topbar-link-color-active-hover;
+                &:hover { background: $topbar-link-bg-hover; }
             }
         }
     }

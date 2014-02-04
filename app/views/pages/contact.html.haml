@@ -65,7 +65,7 @@
         .small-12.columns
           = f.label :subject
           %span.subject-icon
-          = f.text_field( :subject, placeholder: 'Subject' )
+          = f.text_field( :subject, placeholder: 'Subject', value: @subject )
         #form-message.small-12.columns
           = f.label :body
           %span.message-icon

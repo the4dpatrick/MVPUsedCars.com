@@ -8,18 +8,19 @@
     %section.top-bar-section
       %ul.right
         %li.divider
-        %li.prev
-          -#
-            create helper that receives current @car[:id]
-            and either subtract or add one
-            return path to that car's show page
-          = link_to 'Prev', '#'
+        %li
+          = link_to(@previous) do
+            %span.prev-main
+            Prev
         %li.divider
-        %li.next
-          = link_to 'Next', '#'
+        %li
+          = link_to(@next) do
+            Next
+            %span.next-main
+
     %section#nav-prev-next.show-for-small-only
       %ul.right
-        %li.prev
-          = link_to '', '#'
-        %li.next
-          = link_to '', '#'
+        %li.prev-small
+          = link_to '', @previous
+        %li.next-small
+          = link_to '', @next

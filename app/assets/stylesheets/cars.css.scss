@@ -14,7 +14,7 @@
         &:hover { opacity: 1; }
     }
     .name { float: left; background: #acdb1d; }
-    li { height: 50px; }
+    li:not(.has-form) { height: 50px; }
     > ul li > a {
         line-height: 50px;
         font-size: 1.0625rem;
@@ -27,13 +27,14 @@
         ul { margin-right: 0; }
         li { margin-right: 0; }
         .divider { border-color: $primary-color; }
-        li a:not(.button) {
+        li:not(.has-form) a:not(.button) {
             background: #acdb1d;
             line-height: 50px;
             top: 0;
             font-size: 1.0625rem;
         }
     }
+    // Base icon style
     .icon {
         color: white;
         font-family: 'entypo';
@@ -45,39 +46,49 @@
         @include transition-property(color);
         @include transition-duration(300ms);
     }
-    .name {
+    // Back to Inventory
+    .name > a {
+        padding: 1em 1em 0.9em 2em;
         &:before { @extend .icon; content: '\268F'; left: 0.15em; }
-        &:hover:before { color: $primary-color; }
+        @include transition-property(background);
+        @include transition-duration(300ms);
+        &:hover { background: saturate(#acdb1d, 10%); }
+    }
+    .prev-main, .next-main { position: absolute; }
+    .top-bar-section li:not(.has-form):nth-child(2) > a {
+        padding: 0 0.5em 0 1.6em;
+        color: white;
+
         &:hover {
-            a { color: $primary-color; }
+            background: saturate(#acdb1d, 10%);
+        }
+        .prev-main {
+            &:before { @extend .icon; content: '\E765'; }
+            top: 0;
+            left: 0.35em;
         }
     }
-    .prev, .next { position: relative; }
-    .prev {
-        a { padding: 0 1rem 0 2.5rem; }
-        &:before { @extend .icon; content: '\E765'; left: 0.2em; }
-        &:hover{
-            &:before { color: $primary-color; }
-            a { background: white; }
-        }
-    }
-    .next {
-        a { padding: 0 2.5rem 0 1rem; }
-        &:after { @extend .icon; content: '\E766'; right: 0.2em; }
-        &:hover{
-            &:after { color: $primary-color; }
-            a { background: white; }
+    .top-bar-section li:not(.has-form):nth-child(4) > a {
+        padding: 0 1.5em 0 0.5em;
+        color: white;
+        &:hover { background: saturate(#acdb1d, 10%); }
+        .next-main {
+            top: 0;
+            right: -0.3em;
+            &:after { @extend .icon; content: '\E766'; right: 0.2em; }
         }
     }
     @media #{$small-only} {
-        > ul li > a {
+        > ul li.name > a {
             font-size: 0.8rem;
-            padding: 0 0.5rem 0 2rem;
+            padding: 1em 0.5rem 1em 2rem;
         }
         .name:hover {
             &:before { color: white !important; }
             a { color: white !important; }
         }
+        .prev-small, .next-small { position: relative; }
+        .prev-main, .next-main { display: none; }
         #nav-prev-next > ul {
             position: absolute;
             top: 0;
@@ -89,9 +100,8 @@
                 font-size: 3rem;
                 line-height: 50px;
             }
-            .prev > a, .next > a { padding: 1px 1rem; background: #acdb1d; }
-            .prev > a { border-right: solid 1px $primary-color; }
-            .prev:before, .next:after { content: ''; }
+            .prev-small > a, .next-small > a { padding: 1px 1rem; background: #acdb1d; &:hover { background: saturate(#acdb1d, 10%); } }
+            .prev-small > a { border-right: solid 1px $primary-color; }
         }
     }
 }
@@ -102,6 +112,7 @@
         background: #f4f4f4;
         padding: 2em 0;
         ul li > p {
+            max-height: 28px;
             margin-bottom: 0;
             background: white;
             padding: 0.1em 0.7em;
@@ -145,21 +156,24 @@
         }
     }
     #car-details {
-        margin-top: -1.16em;
+        margin-top: -1.22em;
         border-bottom: solid 1px #ccc;
         #gallery {
             border-bottom: solid 1px #ccc;
             padding: 2em 0 0.75rem 0;
             background: #f4f4f4;
+            .carousel-margin { height: 80px; margin-top: 40px; }
         }
         #info {
             text-align: center;
             padding: 1em 0 0 0;
             background: #eeeeee;
-            .row { padding: 0 4% 0 6%; }
+            .row { padding: 0 4% 0 9%; }
             p { text-align: left; }
             p span:first-child { color: #7D7D7D; }
             p span:last-child { font-weight: bold;  }
+            // avoid info from collapsing to another row
+            .columns { padding-left: 0; padding-right: 0; }
         }
         li { margin-right: 0; }
         li a img { width: 310px; }
@@ -184,6 +198,7 @@
             margin-bottom: 0;
             background: white;
             padding: 0.1em 0.7em;
+            max-height: 28px;
         }
     }
     @media #{$small-only} {

@@ -22,14 +22,13 @@
 @import 'pages';
 
 // Page header
-#location, #home, #about, #contact, #inventory {
-    #hero { height: 500px; }
+#location, #hero,  #about, #contact, #inventory {
+    #hero { height: 300px; }
     main > div, section { height: auto; }
     header {
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center 0;
-        height: 500px;
         color: white;
         height: 100%;
         text-align: center;
@@ -44,7 +43,7 @@
         }
         .row {
             position: relative;
-            top: 30%;
+            top: 15%;
         }
     }
 }

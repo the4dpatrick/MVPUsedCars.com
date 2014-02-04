@@ -1,4 +1,4 @@
 require 'spec_helper'
 
-describe CarsController do
+describe UploadsHelper do
 end

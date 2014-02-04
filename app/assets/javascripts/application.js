@@ -5,6 +5,7 @@
 //= require turbolinks
 //= require_self
 //= require_tree .
+//= require jquery-fileupload
 $(function(){ $(document).foundation(); });
 // enables HTML5 placeholder behavior for browsers that aren’t trying hard enough yet http://mths.be/placeholder
 $('input, textarea').placeholder();

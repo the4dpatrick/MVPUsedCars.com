@@ -7,6 +7,10 @@ class CarsController < ApplicationController
   end
 
   def show
+    @cars = Car.without_car(@car).shuffle[0...3]
+    @previous = @car.id == 1 ? Car.last : Car.find( @car.id - 1 )
+    @next = @car == Car.last ? Car.first : Car.find( @car.id + 1 )
+    @uploads = @car.uploads
     @bodyid = 'car-details'
   end
 
@@ -29,9 +33,19 @@ class CarsController < ApplicationController
     end
   end
 
+  def update
+    if @car.update(car_params)
+      redirect_to @car, notice: 'Car was successfully updated'
+    else
+      redirect_to :edit
+    end
+  end
 
   def destroy
     @car.destroy
+    @car.uploads.each do |upload|
+      upload.destroy
+    end
     redirect_to inventory_path
   end
 
@@ -43,6 +57,6 @@ class CarsController < ApplicationController
   end
 
   def car_params
-    params.require(:car).permit(:make, :model, :year, :seats, :transmission, :drive, :interior, :exterior)
+    params.require(:car).permit(:make, :model, :year, :seats, :transmission, :drive, :interior, :exterior, uploads_attributes: [:upload])
   end
 end

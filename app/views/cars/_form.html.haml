@@ -1,4 +1,4 @@
-= form_for @car do |f|
+= form_for @car, html: { multipart: true, id: "fileupload" } do |f|
   - if @car.errors.any?
     #error_explanation
       %h2
@@ -40,5 +40,130 @@
     = f.label :exterior
     %br
     = f.text_field :exterior
+  .row.fileupload-buttonbar
+    .small-7.columns
+      %span.button.fileinput-button
+        %input{ type: 'file', class: 'form-control', name: 'car[uploads_attributes][][upload]', multiple: true }
+          Select
+      %button.button#startbutton{ type: 'submit'}
+        OK
+  %table.table.table-striped
+    %tbody.files{ 'data-toggle' => 'modal-gallery', 'data-target' => '#modal-gallery'}
   .actions
     = f.submit
+
+%script
+  var fileUploadErrors = {
+  maxFileSize: 'File is too big',
+  minFileSize: 'File is too small',
+  acceptFileTypes: 'Filetype not allowed',
+  maxNumberOfFiles: 'Max number of files exceeded',
+  uploadedBytes: 'Uploaded bytes exceed file size',
+  emptyResult: 'Empty file upload result'
+  };
+/ The template to display files available for upload
+%script#template-upload{:type => "text/x-tmpl"}
+  {% for (var i=0, file; file=o.files[i]; i++) { %}
+  %tr.template-upload.fade
+    %td.preview
+      %span.fade
+        %td.name
+          %span {%=file.name%}
+          %td.size
+            %span {%=o.formatFileSize(file.size)%}
+            {% if (file.error) { %}
+            %td.error{:colspan => "2"}
+              %span.label.label-important {%=locale.fileupload.error%}
+              {%=locale.fileupload.errors[file.error] || file.error%}
+              {% } else if (o.files.valid && !i) { %}
+              %td
+                .progress.progress-success.progress-striped.active
+                  .bar.progress-bar{:style => "width:0%;"}
+                    %td.start{:style => "display:none"}
+                      {% if (!o.options.autoUpload) { %}
+                      %button.btn.btn-primary
+                        %i.icon-upload.icon-white
+                          %span {%=locale.fileupload.start%}
+                          {% } %}
+                          {% } else { %}
+                          %td{:colspan => "2"}
+                          {% } %}
+                          %td.cancel
+                            {% if (!i) { %}
+                            %button.btn.btn-warning{:onclick => "minus()"}
+                            %i.icon-ban-circle.icon-white
+                              %span {%=locale.fileupload.cancel%}
+                              {% } %}
+                              {% } %}
+/ The template to display files available for download
+%script{:type => "text/javascript", charset: "utf-8"}
+  var num_added = 0;
+  var added = 0;
+  var all_data = {};
+  function minus() {
+  num_added--;
+  };
+  function submit() {
+  if (num_added == 0) {
+  document.forms["fileupload"].submit();
+  }
+
+  };
+  $(function () {
+
+  $('#startbutton').click(function() {
+  if (num_added == 0) {
+  document.forms["fileupload"].submit();
+  }
+
+  });
+
+  \// Initialize the jQuery File Upload widget:
+  $('#fileupload').fileupload({
+  complete: function (e, data) {
+  window.location = "#{root_url}";
+  },
+  singleFileUploads: false
+  })  .bind('fileuploadadd', function (e, data) {num_added++;})
+  \.bind('fileuploadsubmit', function (e, data) {
+  if(added < num_added)
+  {
+  if (added == 0)
+  all_data = data;
+  else
+  {
+  $.each(data['files'], function(i, file){
+  all_data['files'].push(file);
+  });
+  $.each(data['context'], function(i, context){
+  all_data['context'].push(context);
+  });
+  }
+  added++;
+  if (added == num_added)
+  {
+  added++;
+  all_data.submit();
+  }
+  return false;
+  }
+  })
+  \.bind('fileuploadsend', function (e, data) {num_added = 0; added = 0;});
+
+  \//
+  \// Load existing files:
+  $.getJSON($('#fileupload').prop('action'), function (files) {
+  var fu = $('#fileupload').data('blueimpFileupload'),
+  template;
+  fu._adjustMaxNumberOfFiles(-files.length);
+  console.log(files);
+  template = fu._renderDownload(files)
+  \.appendTo($('#fileupload .files'));
+  \// Force reflow:
+  fu._reflow = fu._transition && template.length &&
+  template[0].offsetWidth;
+  template.addClass('in');
+  $('#loading').remove();
+  });
+
+  });

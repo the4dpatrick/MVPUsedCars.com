@@ -7,6 +7,7 @@ class PagesController < ApplicationController
 
   def contact
     @bodyid = 'contact'
+    @subject = params[:subject]
   end
 
   def about
