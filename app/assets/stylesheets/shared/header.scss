@@ -17,12 +17,12 @@
         p {
             font-size: 1.4rem;
             font-weight: 200;
-            margin: 0 10px;
+            margin: 0.5em 10px;
         }
         .row {
             position: relative;
             top: 15%;
         }
-        @media #{$small-only} { h1 { font-size: 1.5rem; } p { font-size: 1rem; } }
+        @media #{$small-only} { h1 { font-size: 1.7rem; } p { font-size: 1rem; } }
     }
 }
