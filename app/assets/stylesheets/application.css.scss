@@ -1,49 +1,13 @@
 /*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the top of the
- * compiled file, but it's generally better to create a new file per style scope.
- *
  *= require_self
- * require_tree .
  */
-@import 'entypo-fonts';
+@import 'shared/entypo-fonts';
 @import 'compass/css3/transition';
 @import 'compass/css3/columns';
 @import 'compass/css3/transform';
 @import 'compass/css3/box-shadow';
 @import 'foundation_and_overrides';
 
-@import 'cars';
-@import 'pages';
-
-// Page header
-#location, #hero, #faq, #about, #contact, #inventory {
-    #hero { height: 300px; }
-    main > div, section { height: auto; }
-    header {
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center 0;
-        color: white;
-        height: 100%;
-        text-align: center;
-        h1 {
-            color: white;
-            font-weight: 400;
-            margin: 0 10px;
-        }
-        p {
-            font-size: 1.4rem;
-            font-weight: 200;
-        }
-        .row {
-            position: relative;
-            top: 15%;
-        }
-    }
-}
+@import 'shared/header';
+@import 'cars/cars';
+@import 'pages/pages';

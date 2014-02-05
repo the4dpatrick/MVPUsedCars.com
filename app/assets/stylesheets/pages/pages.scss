@@ -1,0 +1,20 @@
+@import 'pages/nav';
+@import 'pages/footer';
+@import 'pages/homepage';
+@import 'pages/faq';
+@import 'pages/about';
+@import 'pages/location';
+@import 'pages/contact';
+
+// Blue button
+.button {
+    @include button;
+    padding-left: 1.75rem !important;
+    border-radius: 3px;
+    background: $secondary-color;
+    &:hover, &:focus {
+        background: #3bb8e6;
+    }
+}
+// Honeypot
+.sweet-honey { display: none; }
