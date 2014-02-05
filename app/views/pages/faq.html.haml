@@ -1,28 +1,34 @@
 = content_for :title do
   Frequently Asked Questions - Used cars in Misawa
-.row
-  %h1
-    Frequently Asked Questions
-  %p
-    Learn more about MVP Used Cars and about buying an used cars in Misawa Air Force Base
-  %dl.accordion( data-accordion )
-    %dd
-      %a.active{ href: '#panel1' }
-        Question 1
-      #panel1.content.active
-        Answer
-    %dd
-      %a{ href: '#panel2' }
-        Question 2
-      #panel2.content
-        Answer
-    %dd
-      %a{ href: '#panel3' }
-        Question 3
-      #panel3.content
-        Answer
-    %dd
-      %a{ href: '#panel4' }
-        Question 4
-      #panel4.content
-        Answer
+%div#hero
+  %header
+    .row
+      .small-6.small-centered.columns
+        = image_tag 'faq/header/faq.svg', onerror: "this.onerror=null; this.src='/assets/faq/header/faq.png'"
+      %h1
+        Frequently Asked Questions
+      %p
+        Learn more about MVP Used Cars and about buying an used cars in Misawa Air Force Base
+%section
+  .row
+    %dl.accordion( data-accordion )
+      %dd
+        %a.active{ href: '#panel1' }
+          Question 1
+        #panel1.content.active
+          Answer
+      %dd
+        %a{ href: '#panel2' }
+          Question 2
+        #panel2.content
+          Answer
+      %dd
+        %a{ href: '#panel3' }
+          Question 3
+        #panel3.content
+          Answer
+      %dd
+        %a{ href: '#panel4' }
+          Question 4
+        #panel4.content
+          Answer
