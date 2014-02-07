@@ -7,9 +7,9 @@ class CarsController < ApplicationController
   end
 
   def show
-    @cars = Car.without_car(@car).shuffle[0...3]
-    @previous = @car.id == 1 ? Car.last : Car.find( @car.id - 1 )
-    @next = @car == Car.last ? Car.first : Car.find( @car.id + 1 )
+    @cars = Car.without_car(@car).shuffle.pop(3)
+    @previous = @car.previous
+    @next = @car.next
     @uploads = @car.uploads
     @bodyid = 'car-details'
   end
@@ -57,6 +57,7 @@ class CarsController < ApplicationController
   end
 
   def car_params
-    params.require(:car).permit(:make, :model, :year, :seats, :transmission, :drive, :interior, :exterior, uploads_attributes: [:upload])
+    params.require(:car).permit(:make, :model, :year, :seats, :transmission, :drive, :interior, :exterior, uploads_attributes: [:upload, :id, :_destroy])
   end
+
 end

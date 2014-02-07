@@ -20,7 +20,9 @@
 
     %section#nav-prev-next.show-for-small-only
       %ul.right
-        %li.prev-small
-          = link_to '', @previous
-        %li.next-small
-          = link_to '', @next
+        - unless @previous.blank?
+          %li.prev-small
+            = link_to '', @previous
+        - unless @next.blank?
+          %li.next-small
+            = link_to '', @next

@@ -14,12 +14,13 @@
     .small-12.small-centered.columns
       %ul.small-block-grid-1.medium-block-grid-3
         - @cars.each do |car|
-          %li
-            %p
-              = car.year
-              = car.make
-              = car.model
-            = link_to image_tag(car.uploads.first.upload.url), car
+          - unless car.uploads.first.nil?
+            %li
+              %p
+                = car.year
+                = car.make
+                = car.model
+              = link_to image_tag(car.uploads.first.upload.url), car
 %section#request-car
   .row
     %h2

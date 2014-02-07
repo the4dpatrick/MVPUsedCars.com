@@ -29,8 +29,7 @@ describe "Pages" do
         it { should have_selector('h7', text: 'Contact Us') }
 
         describe "send a message" do
-          before(:each) { ActionMailer::Base.deliveries.clear }
-          after(:each) { ActionMailer::Base.deliveries.clear }
+          around(:each) { ActionMailer::Base.deliveries.clear }
 
           context "when a valid message" do
             it "sends an email" do

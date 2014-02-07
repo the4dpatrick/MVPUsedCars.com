@@ -7,7 +7,7 @@ class Message
   attr_accessor :name, :email, :phone, :subject, :body, :sweet_honey
 
   validates :sweet_honey, absence: true
-  validates :name, :email, :body, presence: true
+  validates :name, :email, presence: true
   validates :email, format: { with:  %r{.+@.+\..+} }
 
   def initialize(attributes = {})

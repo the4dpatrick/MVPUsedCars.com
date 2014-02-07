@@ -1,169 +1,191 @@
-= form_for @car, html: { multipart: true, id: "fileupload" } do |f|
-  - if @car.errors.any?
-    #error_explanation
-      %h2
-        = pluralize @car.errors.count, "error"
-        prohibited this car from being saved:
-      %ul
-        = @car.errors.full_messages.each do |msg|
-          %li
-            = msg
-  .field
-    = f.label :make
-    %br
-    = f.text_field :make
-  .field
-    = f.label :model
-    %br
-    = f.text_field :model
-  .field
-    = f.label :year
-    %br
-    = f.text_field :year
-  .field
-    = f.label :seats
-    %br
-    = f.text_field :seats
-  .field
-    = f.label :transmission
-    %br
-    = f.text_field :transmission
-  .field
-    = f.label :drive
-    %br
-    = f.text_field :drive
-  .field
-    = f.label :interior
-    %br
-    = f.text_field :interior
-  .field
-    = f.label :exterior
-    %br
-    = f.text_field :exterior
-  .row.fileupload-buttonbar
-    .small-7.columns
-      %span.button.fileinput-button
-        %input{ type: 'file', class: 'form-control', name: 'car[uploads_attributes][][upload]', multiple: true }
-          Select
-      %button.button#startbutton{ type: 'submit'}
-        OK
-  %table.table.table-striped
-    %tbody.files{ 'data-toggle' => 'modal-gallery', 'data-target' => '#modal-gallery'}
-  .actions
-    = f.submit
+.row
+  .small-12.columns
+    = form_for @car, html: { multipart: true, id: "fileupload", "data-abide" => true } do |f|
+      - if @car.errors.any?
+        #error_explanation
+          %h2
+            = pluralize @car.errors.count, "error"
+            prohibited this car from being saved:
+          %ul
+            = @car.errors.full_messages.each do |msg|
+              %li
+                = msg
+      .field
+        = f.label :make
+        = f.text_field :make, required: true, placeholder: 'Toyota'
+        %small.error The make is required
+      .field
+        = f.label :model
+        = f.text_field :model, required: true, placeholder: 'Surf'
+        %small.error The model is required
+      .field#transmission
+        = f.label :transmission
+        = f.select :transmission, options_for_select([['A/T','A/T'], ['M/T','M/T']]), required: true
+      .field#drive
+        = f.label :drive
+        = f.select :drive, options_for_select([['4WD','4WD'], ['2WD','2WD']]), required: true
+      .field
+        = f.label :year
+        = f.text_field :year, required: true, placeholder: '2000'
+        %small.error The year is required
+      .field
+        = f.label :seats
+        = f.text_field :seats, required: true, placeholder: '2'
+        %small.error The number of seats are required
+      .field
+        = f.label :interior
+        = f.text_field :interior, required: true, placeholder: 'Black'
+        %small.error The interior color is required
+      .field
+        = f.label :exterior
+        = f.text_field :exterior, required: true, placeholder: 'Black'
+        %small.error The exterior color is required
+      - if f.object.new_record?
+        .row#new-images
+          .small-12.columns
+            %h4
+              Add images
+            = f.fields_for :uploads_attributes do |upload_fields|
+              = button_tag type: 'file', class: 'button', id:'find-file-button' do
+                %p Select Car Images
+                = upload_fields.file_field :upload, multiple: true, name: "car[uploads_attributes][][upload]"
+        = button_tag type: 'submit', class: 'button', id: 'create-car-button' do
+          Create Car
 
-%script
-  var fileUploadErrors = {
-  maxFileSize: 'File is too big',
-  minFileSize: 'File is too small',
-  acceptFileTypes: 'Filetype not allowed',
-  maxNumberOfFiles: 'Max number of files exceeded',
-  uploadedBytes: 'Uploaded bytes exceed file size',
-  emptyResult: 'Empty file upload result'
-  };
-/ The template to display files available for upload
-%script#template-upload{:type => "text/x-tmpl"}
-  {% for (var i=0, file; file=o.files[i]; i++) { %}
-  %tr.template-upload.fade
-    %td.preview
-      %span.fade
-        %td.name
-          %span {%=file.name%}
-          %td.size
-            %span {%=o.formatFileSize(file.size)%}
-            {% if (file.error) { %}
-            %td.error{:colspan => "2"}
-              %span.label.label-important {%=locale.fileupload.error%}
-              {%=locale.fileupload.errors[file.error] || file.error%}
-              {% } else if (o.files.valid && !i) { %}
-              %td
-                .progress.progress-success.progress-striped.active
-                  .bar.progress-bar{:style => "width:0%;"}
-                    %td.start{:style => "display:none"}
-                      {% if (!o.options.autoUpload) { %}
-                      %button.btn.btn-primary
-                        %i.icon-upload.icon-white
-                          %span {%=locale.fileupload.start%}
-                          {% } %}
-                          {% } else { %}
-                          %td{:colspan => "2"}
-                          {% } %}
-                          %td.cancel
-                            {% if (!i) { %}
-                            %button.btn.btn-warning{:onclick => "minus()"}
-                            %i.icon-ban-circle.icon-white
-                              %span {%=locale.fileupload.cancel%}
-                              {% } %}
-                              {% } %}
-/ The template to display files available for download
-%script{:type => "text/javascript", charset: "utf-8"}
-  var num_added = 0;
-  var added = 0;
-  var all_data = {};
-  function minus() {
-  num_added--;
-  };
-  function submit() {
-  if (num_added == 0) {
-  document.forms["fileupload"].submit();
-  }
+      - unless f.object.new_record?
+        .row#delete-images
+          .small-12.columns
+            %h4
+              Old images
+            %p
+              Check the box to delete
+            = f.fields_for :uploads do |upload_fields|
+              .small-6.medium-3.columns
+                = link_to image_tag(upload_fields.object.upload.url(:thumb)), upload_fields.object.upload.url(:original)
+                = upload_fields.check_box :_destroy
+            %table
+              %tbody{ 'data-toggle' => 'modal-gallery', 'data-target' => '#modal-gallery'}
+        .actions
+          = button_tag type: 'submit', class: 'button split' do
+            = action_name.capitalize
+            Car
+            %span{ "data-dropdown" => "drop"}
+            %ul#drop.f-dropdown{ "data-dropdown-content" => true }
+              %li
+                = link_to 'Delete this car', @car, method: :delete, data: { confirm: 'Are you sure?' }
 
-  };
-  $(function () {
+  %script
+    var fileUploadErrors = {
+    maxFileSize: 'File is too big',
+    minFileSize: 'File is too small',
+    acceptFileTypes: 'Filetype not allowed',
+    maxNumberOfFiles: 'Max number of files exceeded',
+    uploadedBytes: 'Uploaded bytes exceed file size',
+    emptyResult: 'Empty file upload result'
+    };
+  / The template to display files available for upload
+  %script#template-upload{:type => "text/x-tmpl"}
+    {% for (var i=0, file; file=o.files[i]; i++) { %}
+    %tr.template-upload.fade
+      %td.preview
+        %span.fade
+          %td.name
+            %span {%=file.name%}
+            %td.size
+              %span {%=o.formatFileSize(file.size)%}
+              {% if (file.error) { %}
+              %td.error{:colspan => "2"}
+                %span.label.label-important {%=locale.fileupload.error%}
+                {%=locale.fileupload.errors[file.error] || file.error%}
+                {% } else if (o.files.valid && !i) { %}
+                %td
+                  .progress.progress-success.progress-striped.active
+                    .bar.progress-bar{:style => "width:0%;"}
+                      %td.start{:style => "display:none"}
+                        {% if (!o.options.autoUpload) { %}
+                        %button.btn.btn-primary
+                          %i.icon-upload.icon-white
+                            %span {%=locale.fileupload.start%}
+                            {% } %}
+                            {% } else { %}
+                            %td{:colspan => "2"}
+                            {% } %}
+                            %td.cancel
+                              {% if (!i) { %}
+                              %button.btn.btn-warning{:onclick => "minus()"}
+                              %i.icon-ban-circle.icon-white
+                                %span {%=locale.fileupload.cancel%}
+                                {% } %}
+                                {% } %}
+  / The template to display files available for download
+  %script{:type => "text/javascript", charset: "utf-8"}
+    var num_added = 0;
+    var added = 0;
+    var all_data = {};
+    function minus() {
+    num_added--;
+    };
+    function submit() {
+    if (num_added == 0) {
+    document.forms["fileupload"].submit();
+    }
 
-  $('#startbutton').click(function() {
-  if (num_added == 0) {
-  document.forms["fileupload"].submit();
-  }
+    };
+    $(function () {
 
-  });
+    $('#startbutton').click(function() {
+    if (num_added == 0) {
+    document.forms["fileupload"].submit();
+    }
 
-  \// Initialize the jQuery File Upload widget:
-  $('#fileupload').fileupload({
-  complete: function (e, data) {
-  window.location = "#{root_url}";
-  },
-  singleFileUploads: false
-  })  .bind('fileuploadadd', function (e, data) {num_added++;})
-  \.bind('fileuploadsubmit', function (e, data) {
-  if(added < num_added)
-  {
-  if (added == 0)
-  all_data = data;
-  else
-  {
-  $.each(data['files'], function(i, file){
-  all_data['files'].push(file);
-  });
-  $.each(data['context'], function(i, context){
-  all_data['context'].push(context);
-  });
-  }
-  added++;
-  if (added == num_added)
-  {
-  added++;
-  all_data.submit();
-  }
-  return false;
-  }
-  })
-  \.bind('fileuploadsend', function (e, data) {num_added = 0; added = 0;});
+    });
 
-  \//
-  \// Load existing files:
-  $.getJSON($('#fileupload').prop('action'), function (files) {
-  var fu = $('#fileupload').data('blueimpFileupload'),
-  template;
-  fu._adjustMaxNumberOfFiles(-files.length);
-  console.log(files);
-  template = fu._renderDownload(files)
-  \.appendTo($('#fileupload .files'));
-  \// Force reflow:
-  fu._reflow = fu._transition && template.length &&
-  template[0].offsetWidth;
-  template.addClass('in');
-  $('#loading').remove();
-  });
+    \// Initialize the jQuery File Upload widget:
+    $('#fileupload').fileupload({
+    complete: function (e, data) {
+    window.location = "#{root_url}";
+    },
+    singleFileUploads: false
+    })  .bind('fileuploadadd', function (e, data) {num_added++;})
+    \.bind('fileuploadsubmit', function (e, data) {
+    if(added < num_added)
+    {
+    if (added == 0)
+    all_data = data;
+    else
+    {
+    $.each(data['files'], function(i, file){
+    all_data['files'].push(file);
+    });
+    $.each(data['context'], function(i, context){
+    all_data['context'].push(context);
+    });
+    }
+    added++;
+    if (added == num_added)
+    {
+    added++;
+    all_data.submit();
+    }
+    return false;
+    }
+    })
+    \.bind('fileuploadsend', function (e, data) {num_added = 0; added = 0;});
 
-  });
+    \//
+    \// Load existing files:
+    $.getJSON($('#fileupload').prop('action'), function (files) {
+    var fu = $('#fileupload').data('blueimpFileupload'),
+    template;
+    fu._adjustMaxNumberOfFiles(-files.length);
+    console.log(files);
+    template = fu._renderDownload(files)
+    \.appendTo($('#fileupload .files'));
+    \// Force reflow:
+    fu._reflow = fu._transition && template.length &&
+    template[0].offsetWidth;
+    template.addClass('in');
+    $('#loading').remove();
+    });
+
+    });
