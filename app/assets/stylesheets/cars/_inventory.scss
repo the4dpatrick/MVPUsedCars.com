@@ -12,6 +12,13 @@
         }
         // full width images
         li a img { width: 999px; }
+
+        @media #{$small-only} {
+            ul {
+                margin: 0;
+                li { padding: 0 0 1.25rem 0;}
+            }
+        }
     }
     #request-car {
         background: #60A4C6;
