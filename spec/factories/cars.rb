@@ -1,5 +1,3 @@
-include ActionDispatch::TestProcess
-
 FactoryGirl.define do
   factory :car do
     make "MyString"
@@ -10,6 +8,5 @@ FactoryGirl.define do
     drive "MyString"
     interior "MyString"
     exterior "MyString"
-    uploads { fixture_file_upload(Rails.root.join('spec', 'photos', 'test.jpg')) }
   end
 end
