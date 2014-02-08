@@ -82,11 +82,11 @@ Mvp::Application.configure do
     address:              'smtp.mandrillapp.com',
     port:                 587,
     domain:               'MVPUsedCars.com',
-    user_name:            ENV["MANDRILL_USERNAME"],
-    password:             ENV["MANDRILL_PASSWORD"],
+    user_name:            ENV['MANDRILL_USERNAME'],
+    password:             ENV['MANDRILL_PASSWORD'],
     authentication:       'plain',
     enable_starttls_auto: true
   }
-  config.action_mailer.default_options = { from: "MVP Used Cars <no-reply@mvpusedcars.com>" }
-  config.action_mailer.default_url_options = { :host => "MVPUsedCars.com" }
+  config.action_mailer.default_options = { from: 'MVP Used Cars <no-reply@mvpusedcars.com>' }
+  config.action_mailer.default_url_options = { :host => 'MVPUsedCars.com' }
 end

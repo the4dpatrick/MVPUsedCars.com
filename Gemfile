@@ -15,7 +15,8 @@ gem 'haml'
 gem 'foundation-rails'
 gem 'compass-rails', '~> 1.1.2'
 gem 'paperclip'
-gem "jquery-fileupload-rails"
+gem 'jquery-fileupload-rails'
+gem 'aws-sdk'
 
 group :development, :test do
   gem 'sqlite3'
