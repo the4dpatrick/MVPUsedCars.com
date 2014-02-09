@@ -17,6 +17,7 @@ gem 'compass-rails', '~> 1.1.2'
 gem 'paperclip'
 gem 'jquery-fileupload-rails'
 gem 'aws-sdk'
+gem 'bcrypt-ruby'
 
 group :development, :test do
   gem 'sqlite3'

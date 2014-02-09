@@ -1,4 +1,5 @@
 Mvp::Application.routes.draw do
+  get "users/new"
   root 'pages#index'
 
   post 'contact', to: 'contact#create', as: 'contact_create'
