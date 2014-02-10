@@ -35,4 +35,5 @@ Mvp::Application.configure do
   config.active_support.deprecation = :stderr
 
   config.action_mailer.default_options = {from: "MVP Used Cars <no-reply@mvpusedcars.com>"}
+  ActiveModel::SecurePassword.min_cost = true
 end

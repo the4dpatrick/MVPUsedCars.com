@@ -6,4 +6,11 @@ FactoryGirl.define do
     subject "hello"
     body "body"
   end
+
+  factory :user do
+    name 'Bob'
+    email 'user@example.com'
+    password 'foobar'
+    password_confirmation 'foobar'
+  end
 end

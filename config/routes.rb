@@ -1,5 +1,4 @@
 Mvp::Application.routes.draw do
-  get "users/new"
   root 'pages#index'
 
   post 'contact', to: 'contact#create', as: 'contact_create'
@@ -16,4 +15,9 @@ Mvp::Application.routes.draw do
   get 'inventory', to: 'cars#index', as: 'inventory'
 
   resources :uploads
+
+  resources :users
+  resources :sessions, only: [:new, :create, :destroy]
+  match '/signin', to: 'sessions#new', via: 'get'
+  match '/signout', to: 'sessions#destroy', via: 'delete'
 end
