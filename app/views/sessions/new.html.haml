@@ -5,7 +5,7 @@
 
 .row
   .small-12.medium-6.medium-centered.columns
-    = form_for(:session, url: sessions_path) do |f|
+    = form_tag sessions_path do |f|
       %div
         = f.label :email
         = f.text_field :email
