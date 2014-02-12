@@ -1,0 +1,36 @@
+= content_for :title do
+  Edit user
+%h1
+  Update your profile
+.row
+  .small-12.small-centered.columns
+    = form_for @user do |f|
+      - if @user.errors.any?
+        #error_explanation
+          %h2
+            = pluralize @user.errors.count, "error"
+            prohibited this user from being saved:
+          %ul
+            = @user.errors.full_messages.each do |msg|
+              %li
+                = msg
+      %div
+        = f.label :name
+        = f.text_field :name
+      %div
+        = f.label :email
+        = f.text_field :email
+      %div
+        = f.label :password
+        = f.password_field :password
+      %div
+        = f.label :password_confirmation, "Confirm Password"
+        = f.password_field :password_confirmation
+      -# Email subscription
+        %div
+          = f.radio_button :email_subscription, 1, checked: true
+          = f.label :email_subscription, "Subscribe to Emails"
+          = f.radio_button :email_subscription, 0
+          = f.label :email_subscription, "Unsubscribe to Emails"
+
+      = f.submit "Save changes", class: "button expand"

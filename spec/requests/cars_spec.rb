@@ -1,9 +1,49 @@
 require 'spec_helper'
 
 describe "Cars" do
+
+  subject { page }
+
+
+  describe "car creation" do
+    let(:admin) { FactoryGirl.create(:admin) }
+    before { sign_in admin }
+
+    describe "car create" do
+      before { visit new_car_path }
+
+      context "with invalid info" do
+
+        it "should not create a car" do
+          expect { click_button "Create Car" }.not_to change(Car, :count)
+        end
+
+        describe "error messages" do
+          before { click_button "Create Car" }
+          it { should have_content('error') }
+        end
+      end
+
+      context "with valid info" do
+
+        before do
+          fill_in 'Make', with: 'Toyota'
+          fill_in 'Model', with: 'Altezza'
+          select 'A/T', from: 'Transmission'
+          select '4WD', from: 'Drive'
+          fill_in 'Year', with: '2000'
+          fill_in 'Seats', with: '4'
+          fill_in 'Interior', with: 'Black'
+          fill_in 'Exterior', with: 'Silver'
+        end
+        it "should create a car" do
+          expect { click_button "Create Car"}.to change(Car, :count).by(1)
+        end
+      end
+    end
+  end
   describe "/inventory" do
     before { visit inventory_path }
-    subject { page }
 
     describe "navigation" do
       describe "is the normal main nav" do
@@ -17,7 +57,6 @@ describe "Cars" do
     let!(:car) { FactoryGirl.create(:car) }
     let!(:next_car) { FactoryGirl.create(:car) }
     before { visit car_path(car) }
-    subject { page }
 
     describe "navigation" do
 

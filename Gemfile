@@ -18,6 +18,8 @@ gem 'paperclip'
 gem 'jquery-fileupload-rails'
 gem 'aws-sdk'
 gem 'bcrypt-ruby'
+gem 'faker'
+gem 'will_paginate-foundation'
 
 group :development, :test do
   gem 'sqlite3'
@@ -33,6 +35,7 @@ group :test do
   gem 'capybara'
   gem 'growl'
   gem 'factory_girl_rails'
+  gem 'database_cleaner', github: 'bmabey/database_cleaner'
 end
 
 group :doc do

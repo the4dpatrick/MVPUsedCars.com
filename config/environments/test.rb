@@ -34,6 +34,9 @@ Mvp::Application.configure do
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr
 
+  # Default from address for contact form
   config.action_mailer.default_options = {from: "MVP Used Cars <no-reply@mvpusedcars.com>"}
+
+  # Speed up Bcrypt while testing
   ActiveModel::SecurePassword.min_cost = true
 end

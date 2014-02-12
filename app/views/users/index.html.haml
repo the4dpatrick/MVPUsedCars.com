@@ -1,0 +1,12 @@
+= content_for :title do
+  All users
+
+.row
+  .small-12.columns
+    %h1
+      All users
+
+    = will_paginate @users, renderer: FoundationPagination::Rails
+    %ul.users
+      = render @users
+    = will_paginate @users, renderer: FoundationPagination::Rails

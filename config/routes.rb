@@ -12,7 +12,7 @@ Mvp::Application.routes.draw do
   end
 
   resources :cars
-  get 'inventory', to: 'cars#index', as: 'inventory'
+  get '/inventory', to: 'cars#inventory'
 
   resources :uploads
 

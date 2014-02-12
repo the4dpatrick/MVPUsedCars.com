@@ -1,31 +1,12 @@
 = content_for :title do
-  Our Inventory - Subaru, Nissan, and More
-%div#hero
-  %header
-    .row
-      .small-6.small-centered.columns
-        = image_tag 'inventory/header/car.svg', onerror: "this.onerror=null; this.src='/assets/inventory/header/car.png'"
-      %h1
-        Our Inventory
-      %p
-        Browse our current selection from the comfort of you computer
-%section#cars
-  .row
-    .small-12.small-centered.columns
-      %ul.small-block-grid-1.medium-block-grid-3
-        - @cars.each do |car|
-          - unless car.uploads.first.nil?
-            %li
-              %p
-                = car.year
-                = car.make
-                = car.model
-              = link_to image_tag(car.uploads.first.upload.url), car
-%section#request-car
-  .row
-    %h2
-      Can't Find what you're looking for?
-    %p
-      We can special order specific cars upon request
-    = link_to( contact_path(subject: 'Request a car', anchor: 'send-us-a-message') ) do
-      .button Make a Request
+  All cars
+
+.row
+  .small-12.columns
+    %h1
+      All cars
+
+    = will_paginate @cars, renderer: FoundationPagination::Rails
+    %ul.cars
+      = render @cars
+    = will_paginate @cars, renderer: FoundationPagination::Rails

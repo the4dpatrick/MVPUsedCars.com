@@ -1,4 +1,6 @@
 module ApplicationHelper
+
+  # Add `active` class if current page
   def nav_link(link_text, link_path)
     class_name = current_page?(link_path) || link_path != '/' \
     && request.fullpath[0..(link_path.size-1)] == link_path ? 'active' : nil

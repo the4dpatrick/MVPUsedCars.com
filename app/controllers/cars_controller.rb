@@ -1,9 +1,17 @@
 class CarsController < ApplicationController
+  before_action :signed_in_user, only: [:new, :index, :edit, :create, :update, :destroy]
+  before_action :admin_user, only: [:new, :index, :edit, :create, :update, :destroy]
   before_action :set_car, only: [:show, :edit, :update, :destroy]
+  layout 'user', only: [:index, :new, :edit]
 
-  def index
+  def inventory
     @cars = Car.all
     @bodyid = 'inventory'
+  end
+
+  def index
+    @cars = Car.paginate(page: params[:page])
+    @bodyid = 'car-index'
   end
 
   def show

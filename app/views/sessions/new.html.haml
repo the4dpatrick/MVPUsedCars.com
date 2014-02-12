@@ -4,13 +4,13 @@
   Sign in
 
 .row
-  .small-12.medium-6.medium-centered.columns
-    = form_tag sessions_path do |f|
+  .small-12.small-centered.columns
+    = form_tag sessions_path do
       %div
-        = f.label :email
-        = f.text_field :email
+        = label_tag :email
+        = text_field_tag :email
       %div
-        = f.label :password
-        = f.password_field :password
+        = label_tag :password
+        = password_field_tag :password
 
-      = f.submit 'Sign in', class: 'button'
+      = submit_tag 'Sign in', class: 'button'

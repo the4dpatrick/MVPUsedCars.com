@@ -3,13 +3,12 @@ class ContactController < ApplicationController
 
   def create
     @message = Message.new(message_params)
-    session[:return_to] = request.referer || root_path
-
+    store_location
     if @message.valid?
       ContactMailer.new_message(@message).deliver
-      redirect_to session[:return_to], notice: 'Message was sent successfully'
+      redirect_back_or contact_path, notice: 'Message was sent successfully'
     else
-      redirect_to session[:return_to], alert: 'Unsuccessfuly sent message'
+      redirect_back_or contact_path, alert: 'Unsuccessfuly sent message'
     end
   end
 
