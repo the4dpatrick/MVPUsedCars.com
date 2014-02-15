@@ -1,0 +1,13 @@
+#dashboard {
+    > .row:first-child {
+        padding: 1rem 0;
+        h1 { margin: 0; padding: 0; }
+    }
+    > .row:nth-child(2) {
+        clear: both;
+        .panel {
+            text-align: center;
+            font-size: 3em;
+        }
+    }
+}

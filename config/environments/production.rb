@@ -59,7 +59,7 @@ Mvp::Application.configure do
 
   # Precompile additional assets.
   # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
-  # config.assets.precompile += %w( search.js )
+  config.assets.precompile += %w( vendor/modernizr.js )
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
@@ -88,5 +88,5 @@ Mvp::Application.configure do
     enable_starttls_auto: true
   }
   config.action_mailer.default_options = { from: 'MVP Used Cars <no-reply@mvpusedcars.com>' }
-  config.action_mailer.default_url_options = { :host => 'MVPUsedCars.com' }
+  config.action_mailer.default_url_options = { host: 'MVPUsedCars.com' }
 end

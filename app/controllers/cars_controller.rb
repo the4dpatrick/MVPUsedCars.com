@@ -1,8 +1,9 @@
 class CarsController < ApplicationController
-  before_action :signed_in_user, only: [:new, :index, :edit, :create, :update, :destroy]
-  before_action :admin_user, only: [:new, :index, :edit, :create, :update, :destroy]
+  before_action :signed_in_user, except: [:show, :inventory]
+  before_action :admin_user, except: [:show, :inventory]
   before_action :set_car, only: [:show, :edit, :update, :destroy]
-  layout 'user', only: [:index, :new, :edit]
+  before_action :set_message, only: [:inventory, :show, :create]
+  layout 'user', only: [:index, :new, :edit, :create]
 
   def inventory
     @cars = Car.all
@@ -11,7 +12,7 @@ class CarsController < ApplicationController
 
   def index
     @cars = Car.paginate(page: params[:page])
-    @bodyid = 'car-index'
+    @mainid = 'car-index'
   end
 
   def show
@@ -24,18 +25,19 @@ class CarsController < ApplicationController
 
   def new
     @car = Car.new
-    @bodyid = 'new-car'
+    @mainid = 'new-car'
   end
 
   def edit
-    @bodyid = 'edit-car'
+    @mainid = 'edit-car'
   end
 
   def create
     @car = Car.new(car_params)
+    @mainid = 'new-car'
 
     if @car.save
-      redirect_to @car, notice: 'Car was successfully created'
+      redirect_to cars_path, notice: 'Car was successfully created'
     else
       render :new
     end
@@ -67,5 +69,4 @@ class CarsController < ApplicationController
   def car_params
     params.require(:car).permit(:make, :model, :year, :seats, :transmission, :drive, :interior, :exterior, uploads_attributes: [:upload, :id, :_destroy])
   end
-
 end

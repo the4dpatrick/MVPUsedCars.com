@@ -1,0 +1,27 @@
+.fixed.show-for-large-up
+  %nav.top-bar.show-for-large-up(data-topbar)
+    %ul.title-area
+      %li.name
+        .nav-logo
+          = link_to image_tag('simple-logo.png'), user_path(@current_user)
+      %li.toggle-topbar.menu-icon
+        = link_to 'Menu', '#'
+
+    %section.top-bar-section
+      %ul.right
+        %li.divider
+        %li.has-dropdown
+          = link_to @current_user.name, '#', id: 'username'
+          %ul.dropdown
+            %li
+              = link_to 'Settings', edit_user_path(@current_user)
+            %li
+              = link_to 'Sign out', signout_path, method: :delete
+
+%nav.tab-bar.hide-for-large-up
+  %section.left-small
+    %a.left-off-canvas-toggle.menu-icon{ href: '#' }
+      %span
+  %section.middle.tab-bar-section
+    .nav-logo
+      = link_to image_tag('simple-logo.png'), user_path(@current_user)

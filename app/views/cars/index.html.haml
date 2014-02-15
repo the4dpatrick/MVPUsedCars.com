@@ -3,10 +3,26 @@
 
 .row
   .small-12.columns
-    %h1
+    %h1.small-12.medium-3.columns
       All cars
-
+    = link_to 'Add car', new_car_path, class: 'button small-12 medium-2 columns'
+.row
+  .small-12.columns
     = will_paginate @cars, renderer: FoundationPagination::Rails
-    %ul.cars
-      = render @cars
+    %table
+      %thead
+        %tr
+          %th Image
+          %th Make
+          %th Model
+          %th Transmission
+          %th Drive
+          %th Year
+          %th Seats
+          %th Interior
+          %th Exterior
+          - if current_user.admin?
+            %th Delete
+      %tbody
+        = render @cars
     = will_paginate @cars, renderer: FoundationPagination::Rails

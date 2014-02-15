@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-
+  before_action :set_message
 
   def index
     @bodyid = 'home'
@@ -21,5 +21,4 @@ class PagesController < ApplicationController
   def faq
     @bodyid = 'faq'
   end
-
 end

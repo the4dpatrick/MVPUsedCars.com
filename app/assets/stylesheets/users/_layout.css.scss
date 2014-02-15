@@ -1,0 +1,144 @@
+html, body { height: 100%; }
+#user-layout {
+    &.f-topbar-fixed {
+        padding-top: 0 !important;
+        @media #{$large-up} {
+            padding-top: 50px !important;
+        }
+    }
+    main, div.off-canvas, div.inner-wrap, .content, .sidebar, .sidebar-inner, .side-nav { height: 100%; }
+    nav.top-bar {
+        height: 50px;
+        line-height: 50px;
+        .nav-logo {
+            a > img {
+                height: 50px;
+                margin-left: 10px;
+            }
+        }
+
+
+        li:not(.has-form) { height: 50px; }
+        > ul li > a {
+            line-height: 50px;
+            font-size: 1.0625rem;
+            margin: 0;
+            font-weight: 400;
+            color: white;
+            padding: 0 1em 0 2em;
+        }
+        .top-bar-section {
+            ul { margin-right: 0; }
+            li { margin-right: 0; }
+            li:not(.has-form) a:not(.button) {
+                line-height: 50px;
+                top: 0;
+                padding-left: 25px;
+            }
+            li:hover > a { color: white; }
+            ul.dropdown {
+                @include box-shadow(0px 2px 4px rgba(0, 0, 0, 0.2));
+                li {
+                    > a { padding-right: 1px; }
+                    &:hover > a {
+                        background: white;
+                        color: #9dc81a;
+                    }
+                }
+            }
+            #username {
+                &:hover:after {
+                    border-color: #82a805 transparent transparent transparent;
+                }
+                &:hover { color: #9dc81a; }
+                &:after {
+                    top: 25px;
+                    margin-right: 20px;
+                }
+            }
+            ul.dropdown > li > a {
+                background: lighten(#9dc81a, 2%);
+            }
+        }
+    }
+    nav.tab-bar {
+        .tab-bar-section {
+            text-align: center;
+            .nav-logo {
+                a > img {
+                    height: 50px;
+                }
+            }
+        }
+    }
+    .content {
+        #sidebar {
+            width: 15%;
+            overflow: hidden;
+            background-image: url('users/noise-texture.png');
+            background-color: #333;
+            position: fixed;
+            top: 50px;
+            bottom: 0;
+            left: 0;
+            .sidebar-inner {
+                overflow: hidden;
+                .side-nav {
+                    height: 999px;
+                    padding: 0;
+                    li {
+                        margin: 0;
+                        > a {
+                            color: darken(#fff, 30%);
+                            padding-left: 10px;
+                            max-height: 52px;
+                            border-left: 4px solid transparent;
+                            @include transition-property(all);
+                            @include transition-duration(0.25s);
+                            @include transition-timing-function(ease);
+
+                            .icon {
+                                font-family: 'entypo';
+                                color: darken(#fff, 30%);
+                                line-height: 52px;
+                                margin-right: 5px;
+                                font-size: 2.5em;
+                                vertical-align: middle;
+                            }
+                            .dashboard:before { content: '\1F6C7'; }
+                            .cars:before { content: '\F601'; }
+                            .users:before { content: '\1F465'; }
+
+                            &:hover {
+                                color: white;
+                                //padding-top: 14px;
+                                background-image: url('users/noise-texture.png');
+                                background-color: darken(#333, 10%);
+                                padding-left: 20px;
+                                border-left-color: $primary-color;
+                                .icon { color: white; }
+                            }
+                        }
+                    }
+                    .active > a {
+                        color: white;
+                        background-color: darken(#333, 10%);
+                        .icon { color: white; }
+                    }
+                }
+            }
+        }
+        .mainbar {
+            > h1 { margin: 0; }
+            width: 100%;
+            @media #{$large-up} {
+                margin-left: 15%;
+                width: 85%;
+            }
+        }
+        aside.left-off-canvas-menu {
+            min-height: 300px;
+        }
+    }
+
+}

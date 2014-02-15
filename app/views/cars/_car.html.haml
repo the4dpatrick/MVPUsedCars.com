@@ -1,0 +1,22 @@
+%tr
+  %td
+    = link_to image_tag(car.uploads.first.upload.url(:thumb)), car
+  %td
+    = car.make
+  %td
+    = car.model
+  %td
+    = car.transmission
+  %td
+    = car.drive
+  %td
+    = car.year
+  %td
+    = car.seats
+  %td
+    = car.interior
+  %td
+    = car.exterior
+  %td
+    = link_to "delete", car, method: :delete,
+    data: {confirm: "Are you sure you want to delete this car"}

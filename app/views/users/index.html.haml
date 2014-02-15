@@ -7,6 +7,13 @@
       All users
 
     = will_paginate @users, renderer: FoundationPagination::Rails
-    %ul.users
-      = render @users
+    %table
+      %thead
+        %tr
+          %th User
+          - if current_user.admin?
+            %th Delete
+      %tbody
+        = render @users
+    -# %ul.users
     = will_paginate @users, renderer: FoundationPagination::Rails

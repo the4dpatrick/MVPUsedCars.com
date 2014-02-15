@@ -7,17 +7,18 @@ Mvp::Application.routes.draw do
     get 'faq', to: 'pages#faq'
     get 'location', to: 'pages#location'
     get 'contact-us', to: 'pages#contact', as: 'contact'
-    get 'contact-us/:subject', to: 'pages#contact'
     get 'about-us', to: 'pages#about', as: 'about'
   end
 
-  resources :cars
   get '/inventory', to: 'cars#inventory'
+  resources :cars
 
   resources :uploads
 
+  match '/dashboard', to: 'users#dashboard', via: 'get'
   resources :users
-  resources :sessions, only: [:new, :create, :destroy]
+
   match '/signin', to: 'sessions#new', via: 'get'
   match '/signout', to: 'sessions#destroy', via: 'delete'
+  resources :sessions, only: [:new, :create, :destroy]
 end

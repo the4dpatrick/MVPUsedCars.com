@@ -1,0 +1,30 @@
+#sidebar.sidebar.show-for-large-up
+  .sidebar-inner
+    %ul.side-nav
+      = sidebar_active_link_to(dashboard_path) do
+        %span.dashboard.icon
+        Dashboard
+      - if current_user.admin?
+        = sidebar_active_link_to(cars_path) do
+          %span.cars.icon
+          Cars
+        = sidebar_active_link_to(users_path) do
+          %span.users.icon
+          Users
+
+%aside.left-off-canvas-menu
+  %ul.off-canvas-list
+    %li
+      = link_to 'Dashboard', dashboard_path
+    - if current_user.admin?
+      %li
+        = link_to 'Cars', cars_path
+      %li
+        = link_to 'Users', users_path
+      %li
+        %label
+          = current_user.name
+      %li
+        = link_to 'Settings', edit_user_path(@current_user)
+      %li
+        = link_to 'Sign out', signout_path

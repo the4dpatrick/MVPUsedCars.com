@@ -7,7 +7,7 @@
             = pluralize @car.errors.count, "error"
             prohibited this car from being saved:
           %ul
-            = @car.errors.full_messages.each do |msg|
+            - @car.errors.full_messages.each do |msg|
               %li
                 = msg
       .field
@@ -45,10 +45,12 @@
           .small-12.columns
             %h4
               Add images
+            %p
+              You must upload at least one image
             = f.fields_for :uploads_attributes do |upload_fields|
               = button_tag type: 'file', class: 'button', id:'find-file-button' do
                 %p Select Car Images
-                = upload_fields.file_field :upload, multiple: true, name: "car[uploads_attributes][][upload]"
+                = upload_fields.file_field :upload, multiple: true, name: "car[uploads_attributes][][upload]", required: true
         = button_tag type: 'submit', class: 'button', id: 'create-car-button' do
           Create Car
 

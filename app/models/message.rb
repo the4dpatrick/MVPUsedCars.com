@@ -1,5 +1,4 @@
 class Message
-
   include ActiveModel::Validations
   include ActiveModel::Conversion
   extend ActiveModel::Naming
@@ -8,7 +7,7 @@ class Message
 
   validates :sweet_honey, absence: true
   validates :name, :email, presence: true
-  validates :email, format: { with:  %r{.+@.+\..+} }
+  validates :email, format: { with:  /.+@.+\..+/ }
 
   def initialize(attributes = {})
     attributes.each do |name, value|

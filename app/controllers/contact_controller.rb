@@ -1,6 +1,4 @@
 class ContactController < ApplicationController
-
-
   def create
     @message = Message.new(message_params)
     store_location
@@ -17,5 +15,4 @@ class ContactController < ApplicationController
   def message_params
     params.require(:message).permit(:name, :email, :subject, :phone, :body, :sweet_honey)
   end
-
 end

@@ -1,4 +1,4 @@
-require "spec_helper"
+require 'spec_helper'
 
 describe ContactMailer do
   describe '#new_message' do
@@ -15,7 +15,7 @@ describe ContactMailer do
     end
 
     it 'renders the sender email' do
-      expect(mail.from).to eq(["no-reply@mvpusedcars.com"])
+      expect(mail.from).to eq(['no-reply@mvpusedcars.com'])
     end
 
     it 'assigns @messages attributes' do

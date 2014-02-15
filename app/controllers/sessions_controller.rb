@@ -1,6 +1,7 @@
 class SessionsController < ApplicationController
 
   def new
+    @bodyid = 'signin'
   end
 
   def create
@@ -11,7 +12,7 @@ class SessionsController < ApplicationController
       # redirect_back_or() accepts two arguments
       # default path and options
       # see SessionsHelper.rb
-      redirect_back_or user, {}
+      redirect_back_or dashboard_path, {}
     else
       flash.now[:error] = 'Invalid email/password combination'
       render 'new'

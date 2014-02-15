@@ -1,11 +1,10 @@
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
 //= require placeholder
 //= require foundation
-//= require turbolinks
-//= require_self
-//= require_tree .
-//= require jquery-fileupload
-$(function(){ $(document).foundation(); });
-// enables HTML5 placeholder behavior for browsers that aren’t trying hard enough yet http://mths.be/placeholder
+//= require pages
+//= require cars
+$(function(){$(document).foundation(); });
 $('input, textarea').placeholder();
+//= require turbolinks
