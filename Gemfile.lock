@@ -39,6 +39,7 @@ GEM
       nokogiri (>= 1.4.4)
       uuidtools (~> 2.1)
     bcrypt-ruby (3.1.2)
+    body_id (0.0.2)
     builder (3.1.4)
     capybara (2.2.1)
       mime-types (>= 1.16)
@@ -243,6 +244,7 @@ PLATFORMS
 DEPENDENCIES
   aws-sdk
   bcrypt-ruby
+  body_id
   capybara
   childprocess
   coffee-rails (~> 4.0.0)

@@ -1,0 +1,57 @@
+#sidebar {
+    width: 15%;
+    overflow: hidden;
+    background-image: url('users/noise-texture.png');
+    background-color: #333;
+    position: fixed;
+    top: 50px;
+    bottom: 0;
+    left: 0;
+    .sidebar-inner {
+        overflow: hidden;
+        .side-nav {
+            height: 999px;
+            padding: 0;
+            li {
+                margin: 0;
+                > a {
+                    color: darken(#fff, 30%);
+                    padding-left: 10px;
+                    max-height: 52px;
+                    border-left: 4px solid transparent;
+                    @include transition-property(all);
+                    @include transition-duration(0.25s);
+                    @include transition-timing-function(ease);
+
+                    .icon {
+                        font-family: 'entypo';
+                        color: darken(#fff, 30%);
+                        line-height: 52px;
+                        margin-right: 5px;
+                        font-size: 2.5em;
+                        vertical-align: middle;
+                    }
+                    .dashboard:before { content: '\1F6C7'; }
+                    .cars:before { content: '\1F511'; }
+                    .users:before { content: '\1F465'; }
+                    .reviews:before { content: '\E720'; }
+
+                    &:hover {
+                        color: white;
+                        //padding-top: 14px;
+                        background-image: url('users/noise-texture.png');
+                        background-color: darken(#333, 10%);
+                        padding-left: 20px;
+                        border-left-color: $primary-color;
+                        .icon { color: white; }
+                    }
+                }
+            }
+            .active > a {
+                color: white;
+                background-color: darken(#333, 10%);
+                .icon { color: white; }
+            }
+        }
+    }
+}

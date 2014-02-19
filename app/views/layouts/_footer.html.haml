@@ -51,30 +51,31 @@
           %a{ href: location_path } Location
         %li
           %a{ href: contact_path } Contact Us
-        %li
-          %a{ href: '#' } Our Blog
-        %li
-          %a{ href: '#' } Terms of Use
+        - if false
+          %li
+            %a{ href: '#' } Our Blog
+          %li
+            %a{ href: '#' } Terms of Use
   .row
     #social.large-4.large-push-8.columns.show-for-large-up
       %ul.inline-list.right
         %li
-          %a.facebook{ href: '#' }
+          %a.facebook{ href: 'https://facebook.com/mvpusedcars' }
         %li
-          %a.twitter{ href: '#' }
+          %a.twitter{ href: 'https://twitter.com/mvpusedcars' }
         %li
-          %a.gplus{ href: '#' }
+          %a.gplus{ href: 'https://plus.google.com/114770703043987053078/about' }
         %li
-          %a.pinterest{ href: '#' }
+          %a.pinterest{ href: 'http://www.pinterest.com/mvpusedcars/' }
     #social.small-4.columns.show-for-medium-down.small-centered.hide-for-large-up
       %ul.inline-list
         %li
-          %a.facebook{ href: '#' }
+          %a.facebook{ href: 'https://facebook.com/mvpusedcars' }
         %li
-          %a.twitter{ href: '#' }
+          %a.twitter{ href: 'https://twitter.com/mvpusedcars' }
         %li
-          %a.gplus{ href: '#' }
+          %a.gplus{ href: 'https://plus.google.com/114770703043987053078/about' }
         %li
-          %a.pinterest{ href: '#' }
+          %a.pinterest{ href: 'http://www.pinterest.com/mvpusedcars/' }
     %small.copyright
       = "© MVP Used Cars #{Time.now.year}. All rights reserved."

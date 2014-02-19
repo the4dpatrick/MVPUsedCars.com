@@ -1,39 +1,7 @@
 = content_for :title do
   Dashboard -
   = @user.name
-.row
-  .small-12.columns
-    %h1.small-12.medium-3.columns
-      Dashboard
-    = link_to 'Add a car', new_car_path, class: 'button small-12 medium-2 columns'
 - if @current_user.admin?
-  .row(data-equalizer)
-    .small-12.medium-3.columns
-      .panel(data-equalizer-watch)
-        = @number_of_cars
-        %h4
-          Current Inventory
-    .small-12.medium-3.columns
-      .panel(data-equalizer-watch)
-        12
-        %h4
-          Sold this month
-    .small-12.medium-3.columns
-      .panel(data-equalizer-watch)
-        89
-        %h4
-          Reviews
-    .small-12.medium-3.columns
-      .panel(data-equalizer-watch)
-        43
-        %h4
-          Social mentions
-  .row
-    .small-12.columns
-      %hr
-      <h4 id="progress-bars">Progress</h4>
-      <div class="progress large-6"><span class="meter" style="width: 40%"></span></div>
-      <div class="radius progress success large-8"><span class="meter" style="width: 80%"></span></div>
-      <div class="nice round progress alert large-10"><span class="meter" style="width: 30%"></span></div>
-      <div class="nice secondary progress"><span class="meter" style="width: 50%"></span></div>
+  = render 'admin_dashboard'
 - else
+  = render 'user_dashboard'

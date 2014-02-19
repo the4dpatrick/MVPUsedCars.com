@@ -5,6 +5,8 @@ describe Car do
     @car = Car.new(attributes_for(:car))
   end
 
+  subject { @car }
+
   it { should respond_to(:make) }
   it { should respond_to(:model) }
   it { should respond_to(:year) }
@@ -13,11 +15,11 @@ describe Car do
   it { should respond_to(:drive) }
   it { should respond_to(:interior) }
   it { should respond_to(:exterior) }
+  it { should respond_to(:uploads) }
 
-  context 'when make is not present' do
-    before { @car.make = '' }
-    it { should_not be_valid }
-  end
+  # temp comment out until solve car uploads specs
+  # it { should be_valid }
+
   context 'when make is not present' do
     before { @car.make = '' }
     it { should_not be_valid }

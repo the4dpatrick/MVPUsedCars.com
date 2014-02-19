@@ -18,7 +18,7 @@
     = javascript_include_tag "vendor/modernizr"
     = csrf_meta_tags
 
-  %body{ id: "#{@bodyid}" }
+  %body{ id: "#{ body_id }" }
     -# render navigation based on if within one of the `pages` pages
     - unless controller_name  == 'cars' && action_name == 'show'
       = render 'layouts/nav_main'

@@ -17,7 +17,6 @@ describe 'User Pages' do
 
       describe 'pagination' do
         before do
-          admin.delete
           DatabaseCleaner.clean
         end
         before(:all) { 30.times { FactoryGirl.create(:user) } }
@@ -25,6 +24,7 @@ describe 'User Pages' do
 
         it { should have_selector('ul.pagination') }
 
+        # occasionally failing spec because of previous records in test db
         it 'lists each user' do
           User.all.each do |user|
             expect(page).to have_selector('li', text: user.name)

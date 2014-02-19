@@ -1,16 +1,16 @@
 = content_for :title do
   Sign in
-%h1
-  Sign in
+#signin-box
+  %h1
+    Sign in
+  .row
+    .small-12.small-centered.columns
+      = form_tag sessions_path do
+        %div
+          = label_tag :email
+          = text_field_tag :email
+        %div
+          = label_tag :password
+          = password_field_tag :password
 
-.row
-  .small-12.small-centered.columns
-    = form_tag sessions_path do
-      %div
-        = label_tag :email
-        = text_field_tag :email
-      %div
-        = label_tag :password
-        = password_field_tag :password
-
-      = submit_tag 'Sign in', class: 'button'
+        = submit_tag 'Sign in', class: 'button expand'

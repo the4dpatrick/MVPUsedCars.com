@@ -21,6 +21,7 @@ gem 'bcrypt-ruby'
 gem 'faker'
 gem 'will_paginate-foundation'
 gem 'rubocop'
+gem 'body_id'
 
 group :development, :test do
   gem 'sqlite3'

@@ -26,6 +26,10 @@ describe 'User layout' do
       it { should have_link('Dashboard', href: dashboard_path) }
       it { should_not have_link('Cars', href: cars_path) }
       it { should_not have_link('Users', href: users_path) }
+      it { should_not have_link('Reviews', href: reviews_path) }
+
+      it { should have_link('Settings', href: edit_user_path(user)) }
+      it { should have_link('Sign out', href: signout_path) }
     end
 
     context 'as an admin' do
@@ -35,6 +39,10 @@ describe 'User layout' do
       it { should have_link('Dashboard', href: dashboard_path) }
       it { should have_link('Cars', href: cars_path) }
       it { should have_link('Users', href: users_path) }
+      it { should have_link('Reviews', href: reviews_path) }
+
+      it { should have_link('Settings', href: edit_user_path(admin)) }
+      it { should have_link('Sign out', href: signout_path) }
     end
   end
 

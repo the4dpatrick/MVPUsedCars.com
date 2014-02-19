@@ -1,0 +1,74 @@
+#new-review, #edit-review {
+    > .row {
+        padding: 0.5rem 0 2rem 0;
+        label { font-weight: bold; }
+        textarea { height: 100px; }
+        #select-files {
+            position: relative;
+            overflow: hidden;
+            margin: 10px;
+            span {
+
+            }
+            input {
+                position: absolute;
+                top: 0;
+                right: 0;
+                margin: 0;
+                padding: 0;
+                font-size: 20px;
+                cursor: pointer;
+                opacity: 0;
+                filter: alpha(opacity=0)
+            }
+        }
+    }
+    #new-image {
+        background: #f4f4f4;
+        margin: 0;
+        text-align: center;
+        > div { margin: 2em 0; }
+        h4 { font-weight: normal; font-size: 2em; margin: 0; }
+        #find-file-button {
+             overflow: hidden;
+             height: 50px;
+             width: 200px;
+             z-index: 1;
+             position: relative;
+             p {
+                 position: absolute;
+                 top: 50%;
+                 left: 50%;
+                 margin-left: -80px;
+                 margin-top: -13px;
+               }
+             #review_photo {
+                  height: 999px;
+                  position: absolute;
+                  top: 0;
+                  left: 0;
+                  width: 1000px;
+                  opacity: 0;
+                  z-index: 0;
+                  &:hover { cursor: pointer; }
+             }
+        }
+    }
+    #create-review-button {
+        width: 100%;
+        margin: 1em auto;
+    }
+    #delete-image {
+        background: #f4f4f4;
+        margin: 0;
+        text-align: center;
+        h4 { font-weight: normal; font-size: 2em; margin: 0; }
+        p { font-weight: 300; }
+        > div, > div > div { margin: 1em 0; }
+    }
+    .actions {
+        text-align: center;
+        margin: 1em 0;
+        .button { width: 100%; }
+    }
+}

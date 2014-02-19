@@ -1,10 +1,3 @@
-#new-car{
-    h1 {
-        text-align: center;
-        font-weight: 400;
-        padding-top: 0.5rem;
-        span {
-            color: black;
-        }
-    }
+#new-car {
+    @import 'shared/page_heading';
 }

@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
 
   def new
-    @bodyid = 'signin'
+    @body_id = 'signin'
   end
 
   def create

@@ -1,6 +1,6 @@
 %tr
   %td
-    = link_to image_tag(car.uploads.first.upload.url(:thumb)), car
+    = link_to image_tag(car.uploads.first.upload.url(:thumb)), edit_car_path(car)
   %td
     = car.make
   %td

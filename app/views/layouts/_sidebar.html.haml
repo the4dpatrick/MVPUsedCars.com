@@ -11,6 +11,9 @@
         = sidebar_active_link_to(users_path) do
           %span.users.icon
           Users
+        = sidebar_active_link_to(reviews_path) do
+          %span.reviews.icon
+          Reviews
 
 %aside.left-off-canvas-menu
   %ul.off-canvas-list
@@ -22,9 +25,11 @@
       %li
         = link_to 'Users', users_path
       %li
+        = link_to 'Reviews', reviews_path
+      %li
         %label
           = current_user.name
       %li
         = link_to 'Settings', edit_user_path(@current_user)
       %li
-        = link_to 'Sign out', signout_path
+        = link_to 'Sign out', signout_path, method: :delete

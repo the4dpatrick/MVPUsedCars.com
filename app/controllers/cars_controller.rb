@@ -7,7 +7,7 @@ class CarsController < ApplicationController
 
   def inventory
     @cars = Car.all
-    @bodyid = 'inventory'
+    @body_id = 'inventory'
   end
 
   def index
@@ -16,11 +16,11 @@ class CarsController < ApplicationController
   end
 
   def show
-    @cars = Car.without_car(@car).shuffle.pop(3)
+    @cars = Car.without_car_shuffle(@car, 3)
     @previous = @car.previous
     @next = @car.next
     @uploads = @car.uploads
-    @bodyid = 'car-details'
+    @body_id = 'car-details'
   end
 
   def new

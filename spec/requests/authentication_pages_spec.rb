@@ -97,22 +97,23 @@ describe 'Authentication' do
           end
         end
 
-        describe 'submitting to the destroy action' do
-          before { delete car_path(FactoryGirl.create(:car)) }
-          specify { expect(response).to redirect_to(signin_path) }
+      #   describe 'submitting to the destroy action' do
+      #     let(:car) { FactoryGirl.create(:car) }
+      #     before { delete car_path(car) }
+      #     specify { expect(response).to redirect_to(signin_path) }
 
-          describe 'attempt to sign in as a non-admin after redirect' do
-            before do
-              visit new_car_path
-              fill_in 'Email', with: user.email
-              fill_in 'Password', with: user.password
-              click_button 'Sign in'
-            end
+      #     describe 'attempt to sign in as a non-admin after redirect' do
+      #       before do
+      #         visit new_car_path
+      #         fill_in 'Email', with: user.email
+      #         fill_in 'Password', with: user.password
+      #         click_button 'Sign in'
+      #       end
 
-            specify { expect(response).to redirect_to(signin_path) }
-            it { should have_selector('div.alert-box.alert', text: 'Access Denied') }
-          end
-        end
+      #       specify { expect(response).to redirect_to(signin_path) }
+      #       it { should have_selector('div.alert-box.alert', text: 'Access Denied') }
+      #     end
+      #   end
       end
 
       describe 'in the Users controller' do

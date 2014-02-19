@@ -1,0 +1,23 @@
+= content_for :title do
+  All reviews
+
+.row
+  .small-12.columns
+    %h1.small-12.medium-3.columns
+      All reviews
+    = link_to 'Add review', new_review_path, class: 'button small-12 medium-2 columns'
+.row
+  .small-12.columns
+    = will_paginate @reviews, renderer: FoundationPagination::Rails
+    %table
+      %thead
+        %tr
+          %th Image
+          %th Customer
+          %th Review
+          %th Car
+          - if current_user.admin?
+            %th Delete
+      %tbody
+        = render @reviews
+    = will_paginate @reviews, renderer: FoundationPagination::Rails

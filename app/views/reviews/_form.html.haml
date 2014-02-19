@@ -1,0 +1,50 @@
+.row
+  .small-12.columns
+    = form_for @review, html: { multipart: true, "data-abide" => true } do |f|
+      - if @review.errors.any?
+        #error_explanation
+          %h2
+            = pluralize @review.errors.count, "error"
+            prohibited this review from being saved:
+          %ul
+            - @review.errors.full_messages.each do |msg|
+              %li
+                = msg
+      .field
+        = f.label :customer
+        = f.text_field :customer, required: true, placeholder: 'Billy Jean'
+        %small.error The customer's name is required
+      .field
+        = f.label :car
+        = f.text_field :car, required: true, placeholder: 'Nissan Skyline GTR'
+        %small.error The customer's car is required
+      .field
+        = f.label :body
+        = f.text_area :body, required: true, placeholder: 'Service was great'
+        %small.error The review body is required
+      - if f.object.new_record?
+        .row#new-image
+          .small-12.columns
+            %h4
+              Add images
+            %p
+              You must upload one image
+            = button_tag type: 'file', class: 'button', id:'find-file-button' do
+              %p Select Customer Image
+              = f.file_field :photo, required: true
+        = button_tag 'Create Review', type: 'submit', class: 'button', id: 'create-review-button'
+      - unless f.object.new_record?
+        .row#delete-image
+          .small-12.columns
+            %h4
+              Uploaded image
+            .small-12.columns
+              = link_to image_tag(@review.photo.url(:medium)), @review.photo.url(:original)
+        .actions
+          = button_tag type: 'submit', class: 'button split' do
+            = action_name.capitalize
+            Review
+            %span{ "data-dropdown" => "drop"}
+            %ul#drop.f-dropdown{ "data-dropdown-content" => true }
+              %li
+                = link_to 'Delete this review', @review, method: :delete, data: { confirm: 'Are you sure?' }

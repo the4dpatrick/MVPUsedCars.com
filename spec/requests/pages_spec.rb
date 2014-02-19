@@ -74,7 +74,10 @@ describe 'Pages' do
   end
 
   describe 'Home page' do
-    before { visit root_path }
+    before do
+      6.times { FactoryGirl.create(:review) }
+      visit root_path
+    end
     it_should_behave_like 'all static pages', :root_path
     it { should have_text('Quality Cars') }
     it { should have_title('Misawa Used Cars - Misawa Auto Sales') }
