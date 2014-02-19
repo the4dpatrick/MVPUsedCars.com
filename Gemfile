@@ -40,6 +40,10 @@ group :test do
   gem 'database_cleaner', github: 'bmabey/database_cleaner'
 end
 
+group :production do
+  gem 'rails_12factor'
+  gem 'pg'
+end
 group :doc do
   gem 'sdoc', require: false
 end
