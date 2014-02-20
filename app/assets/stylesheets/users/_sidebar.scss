@@ -1,7 +1,7 @@
 #sidebar {
     width: 15%;
     overflow: hidden;
-    background-image: url('users/noise-texture.png');
+    background-image: url('https://s3-us-west-2.amazonaws.com/mvp-used-cars/images/users/noise-texture.png');
     background-color: #333;
     position: fixed;
     top: 50px;
@@ -39,7 +39,7 @@
                     &:hover {
                         color: white;
                         //padding-top: 14px;
-                        background-image: url('users/noise-texture.png');
+                        background-image: url('https://s3-us-west-2.amazonaws.com/mvp-used-cars/images/users/noise-texture.png');
                         background-color: darken(#333, 10%);
                         padding-left: 20px;
                         border-left-color: $primary-color;

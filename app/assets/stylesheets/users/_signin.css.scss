@@ -1,11 +1,9 @@
-#signin {
-    #signin-box {
-        width: 19em;
-        @media #{$medium-up} { width: 32em; }
-        margin: 2em auto;
-        background: rgb(231, 230, 230);
-        @include box-shadow(0 0 rgba(0, 0, 0, 0.2));
-        h1 { text-align: center; }
-        input.button.expand { padding-left: 0 !important; }
-    }
+#signin-box {
+    width: 19em;
+    @media #{$medium-up} { width: 32em; }
+    margin: 2em auto;
+    background: rgb(231, 230, 230);
+    @include box-shadow(0 0 rgba(0, 0, 0, 0.2));
+    h1 { text-align: center; }
+    input.button.expand { padding-left: 0 !important; }
 }
