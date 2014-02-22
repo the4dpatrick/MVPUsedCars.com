@@ -150,6 +150,7 @@
                 float: left;
                 margin-right: 20px;
                 .quote-meta { top: 10px; position: relative; }
+                .quote { max-height: 127px; }
                 &:hover {
                     .quote-meta {
                         top: 0;
