@@ -156,6 +156,7 @@
                         @include transition-property(all);
                         @include transition-duration(0.2s);
                         @include transition-timing-function(ease-out);
+                        .quote { max-height: 127px; }
                         .quotee .inner { background: #E1E1E1; }
                         .quotee:after { color: #E1E1E1; }
                     }
