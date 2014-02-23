@@ -33,6 +33,7 @@ class UsersController < ApplicationController
   def dashboard
     @user = current_user
     @number_of_cars = Car.count(:all)
+    @number_of_reviews = Review.count(:all)
     @mainid = 'dashboard'
   end
 

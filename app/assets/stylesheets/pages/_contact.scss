@@ -1,4 +1,5 @@
 #contact {
+    $email-form-border-color: #A9A9A9;
     header { background: url('https://s3-us-west-2.amazonaws.com/mvp-used-cars/images/contact/header/contact-header.jpg'); }
     #general-info, #email-form, { padding: 3em 0; }
     #general-info {
@@ -39,12 +40,13 @@
             text-align: center;
             label { display: none; }
             input[type='text'], input[type='email'], input[type='tel'], textarea {
-                background-color: transparent;
+                background-color: white;
+                border-color: $email-form-border-color;
                 color: black;
                 box-shadow: none;
                 -webkit-box-shadow: none;
                 &:focus {
-                    background-color: transparent;
+                    background-color: darken(white, 2%);
                 }
                 &[data-invalid] {
                     border: 1px solid #D44949;
@@ -55,7 +57,7 @@
             }
             .small-12.columns {
                 .user-icon, .email-icon, .phone-icon, .message-icon, .subject-icon {
-                    color: #c2c2c2;;
+                    color: $email-form-border-color;
                     font-family: 'entypo';
                     width: 32px;
                     font-size: 36px;
@@ -64,7 +66,7 @@
                     left: 16px;
                     top: 0;
                     line-height: 1;
-                    border-right: 1px solid $input-border-color;
+                    border-right: 1px solid $email-form-border-color;
                     @include transition-property(border-color);
                     @include transition-duration(0.3s);
                     @include transition-timing-function(ease-in-out);
@@ -88,7 +90,7 @@
                     @include scaleX( -1 );
                     padding: 0 6px 0 6px;
                     border-right: none;
-                    border-left: 1px solid $input-border-color;
+                    border-left: 1px solid $email-form-border-color;
                     &:before { content: '\1F4DE'; }
                 }
                 .subject-icon:before { content: '\E731';}
@@ -98,7 +100,7 @@
                 overflow: hidden;
                 margin-bottom: 1rem;
                 .message-icon {
-                    border-bottom: 1px solid $input-border-color;
+                    border-bottom: 1px solid $email-form-border-color;
                     height: 999px;
                     &:before { content: '\270E'; }
                     & + textarea { margin-bottom: 0; }

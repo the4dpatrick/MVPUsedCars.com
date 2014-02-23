@@ -11,15 +11,15 @@
               %li
                 = msg
       .field
-        = f.label :customer
+        = f.label :customer, "Customer's name"
         = f.text_field :customer, required: true, placeholder: 'Billy Jean'
         %small.error The customer's name is required
       .field
-        = f.label :car
+        = f.label :car, 'Purchased car'
         = f.text_field :car, required: true, placeholder: 'Nissan Skyline GTR'
         %small.error The customer's car is required
       .field
-        = f.label :body
+        = f.label :body, 'Review'
         = f.text_area :body, required: true, placeholder: 'Service was great'
         %small.error The review body is required
       - if f.object.new_record?
