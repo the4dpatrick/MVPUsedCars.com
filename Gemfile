@@ -43,6 +43,7 @@ end
 group :production do
   gem 'rails_12factor'
   gem 'pg'
+  gem 'newrelic_rpm'
 end
 group :doc do
   gem 'sdoc', require: false

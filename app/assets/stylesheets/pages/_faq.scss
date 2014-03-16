@@ -1,31 +1,34 @@
 #faq {
     header { background: url('https://s3-us-west-2.amazonaws.com/mvp-used-cars/images/faq/header/faq-header.jpg'); }
-    section .row {
-        padding: 3em 0;
-        dd {
-            position: relative;
-            a {
-                @media #{$small-only} { padding-right: 1.8rem; }
-                background: #dcdcdc;
-                font-weight: 700;
-                border-bottom: 1px solid rgb(202, 202, 202);
-                @include transition-property(background);
-                @include transition-duration(0.3s);
-                &:after {
-                    content: "\E760";
-                    font-family: "entypo";
-                    font-size: 50px;
-                    position: absolute;
-                    line-height: 0;
-                    color: #fff;
-                    right: 1rem;
-                    top: 1.8rem;
+    section {
+        background: rgb(241, 241, 241);
+        .row {
+            padding: 3em 0;
+            dd {
+                position: relative;
+                a {
+                    @media #{$small-only} { padding-right: 1.8rem; }
+                    background: #dcdcdc;
+                    font-weight: 700;
+                    border-bottom: 1px solid rgb(202, 202, 202);
+                    @include transition-property(background);
+                    @include transition-duration(0.3s);
+                    &:after {
+                        content: "\E760";
+                        font-family: "entypo";
+                        font-size: 50px;
+                        position: absolute;
+                        line-height: 0;
+                        color: #fff;
+                        right: 1rem;
+                        top: 1.8rem;
+                    }
+                    &.active {
+                        color: #82a805;
+                        &:after { content: '\E763'; color: #82a805; }
+                    }
+                    &:hover { background: darken(#dcdcdc, 5%); }
                 }
-                &.active {
-                    color: #82a805;
-                    &:after { content: '\E763'; color: #82a805; }
-                }
-                &:hover { background: darken(#dcdcdc, 5%); }
             }
         }
     }
