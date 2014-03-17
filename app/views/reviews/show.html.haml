@@ -1,13 +1,11 @@
 .row
-  .small-12.columns
+  .small-12.medium-3.columns
+    = image_tag(@review.photo.url(:medium))
     %h1
-      = review.customer
+      = @review.customer
     %p
-      = review.car
-.row
-  .small-12.columns
-    = link_to image_tag(review.photo.url(:thumb)), edit_review_path(review)
-.row
-  .small-12.columns
+      = @review.car
+
+  .small-12.medium-9.columns
     %p
-      = review.body
+      = @review.body

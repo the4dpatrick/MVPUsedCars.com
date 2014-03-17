@@ -2,7 +2,7 @@ class ReviewsController < ApplicationController
   before_action :signed_in_user, expect: [:show]
   before_action :admin_user, expect: [:show]
   before_action :set_review, only: [:show, :edit, :update, :destroy]
-  layout 'user'
+  layout 'user', except: [:show]
 
   def index
     @reviews = Review.paginate(page: params[:page])
@@ -35,6 +35,7 @@ class ReviewsController < ApplicationController
   end
 
   def show
+    @message = Message.new
   end
 
   def update
