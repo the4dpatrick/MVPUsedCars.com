@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
-  before_action :signed_in_user
-  before_action :admin_user
+  before_action :signed_in_user, expect: [:show]
+  before_action :admin_user, expect: [:show]
   before_action :set_review, only: [:show, :edit, :update, :destroy]
   layout 'user'
 

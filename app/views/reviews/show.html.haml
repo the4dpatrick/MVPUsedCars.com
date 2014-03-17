@@ -1,2 +1,13 @@
-<h1>Reviews#show</h1>
-<p>Find me in app/views/reviews/show.html.erb</p>
+.row
+  .small-12.columns
+    %h1
+      = review.customer
+    %p
+      = review.car
+.row
+  .small-12.columns
+    = link_to image_tag(review.photo.url(:thumb)), edit_review_path(review)
+.row
+  .small-12.columns
+    %p
+      = review.body
