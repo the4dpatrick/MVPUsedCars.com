@@ -1,0 +1,13 @@
+#review-show {
+    main {
+        > .row { margin: 2em auto;
+                 padding: 1em 0;
+                 border: 1px solid #e5e5e5;
+                 background: #f4f4f4;
+                 @media #{$small-only} { .small-12.medium-3 { text-align: center; } }
+               }
+        h1 { font-weight: 400; margin: 0; }
+        h1 + p { font-size: 1rem; }
+        p { font-size: 1.5rem; }
+    }
+}
