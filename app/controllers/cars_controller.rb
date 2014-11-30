@@ -6,7 +6,7 @@ class CarsController < ApplicationController
   layout 'user', only: [:index, :new, :edit, :create]
 
   def inventory
-    @cars = Car.all(order: 'created_at DESC')
+    @cars = Car.all
     @body_id = 'inventory'
   end
 
