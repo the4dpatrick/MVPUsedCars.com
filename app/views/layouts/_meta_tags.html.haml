@@ -1,0 +1,30 @@
+%meta{charset: 'utf-8'}
+%meta{name: 'viewport', content: 'width=device-width, initial-scale=1.0'}
+%meta{name: 'apple-mobile-web-app-status-bar-style', content: 'black'}
+%meta{property: 'og:type', content: 'website'}
+%meta{property: 'og:url', content: request.url}
+%meta{property: 'og:site_name', content: 'MVP Used Cars'}
+%meta{name: 'twitter:site', content: '@mvpusedcars'}
+
+- if content_for?(:title)
+  %meta{property: 'og:title', content: "#{yield(:title)}"}
+  %title
+    = yield(:title) + ' | MVP Used Cars'
+- else
+  %meta{property: 'og:title', content: 'MVP Used Cars'}
+  %title
+    MVP Used Cars
+
+- if content_for?(:twitter_image_src)
+  %meta{name: 'twitter:card', content: 'summary_large_image'}
+  %meta{name: 'twitter:image:src', content: "#{yield(:twitter_image_src)}"}
+
+- if content_for?(:description)
+  %meta{property: 'og:description', content: truncate("#{yield(:description}", length: 80)}
+  %meta{property: 'twitter:description', content: truncate("#{yield(:description}", length: 80)}
+- else
+  %meta{property: 'og:description', content: truncate('MVP Used Cars has been serving the men and women of Misawa Air Force Base with quality used cars for over 10 years', length: 80)}
+  %meta{property: 'twitter:description', content: truncate('MVP Used Cars has been serving the men and women of Misawa Air Force Base with quality used cars for over 10 years', length: 80)}
+
+- if content_for?(:og_image)
+  %meta{property: 'og:image', content: "#{og_image}"}

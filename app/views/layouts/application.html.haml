@@ -7,16 +7,17 @@
 /[if IE 8]
   %html.no-js.lt-ie9{ lang: 'en' }
 /[if gt IE 8]
-%html.no-js{:lang => "en"}
+%html.no-js{lang: 'en', dir: "ltr", "xmlns:fb": "http://www.facebook.com/2008/fbml", "xmlns:og": "http://ogp.me/ns#"}
   / <![endif]
   %head
-    %meta{:charset => "utf-8"}/
-    %meta{ name: "viewport", content: "width=device-width, initial-scale=1.0" }
+    = render 'layouts/meta_tags'
     %title
       = content_for?(:title) ? yield(:title) + " | MVP Used Cars" : "MVP Used Cars"
     = stylesheet_link_tag "application", "http://fonts.googleapis.com/css?family=Lato:300,400,700"
     = javascript_include_tag "vendor/modernizr"
     = csrf_meta_tags
+    - if Rails.env.production?
+      = render 'layouts/google_analytics'
 
   %body{ id: "#{ body_id }" }
     -# render navigation based on if within one of the `pages` pages
